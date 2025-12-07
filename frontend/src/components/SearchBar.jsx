@@ -23,10 +23,11 @@ export const SearchBar = ({ onSearch, isLoading }) => {
       <div 
         className="relative" 
         style={{
-          backgroundColor: 'rgba(0, 0, 0, 0.3)',
-          backdropFilter: 'blur(12px)',
-          border: '1px solid rgba(255, 255, 255, 0.05)',
-          borderRadius: '0.5rem'
+          backgroundColor: 'rgba(255, 255, 255, 0.08)',
+          backdropFilter: 'blur(16px)',
+          border: '2px solid rgba(139, 92, 246, 0.5)',
+          borderRadius: '0.75rem',
+          boxShadow: '0 0 20px rgba(139, 92, 246, 0.3), 0 0 40px rgba(139, 92, 246, 0.1)'
         }}
       >
         <input
