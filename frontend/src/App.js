@@ -95,10 +95,10 @@ function App() {
               <div className="mb-6 flex items-center justify-between">
                 <div 
                   data-testid="search-results-info"
-                  className="text-xs tracking-widest uppercase font-semibold" 
+                  className="text-xs tracking-widest uppercase font-medium" 
                   style={{ 
-                    fontFamily: 'Manrope, sans-serif',
-                    color: '#A1A1AA' 
+                    fontFamily: 'JetBrains Mono, monospace',
+                    color: '#A1A1A1' 
                   }}
                 >
                   {totalResults} imagens · {searchTime.toFixed(0)}ms
