@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { FiDownload, FiExternalLink, FiX, FiCopy } from 'react-icons/fi';
+import LicenseBadge from './LicenseBadge';
+import { FiDownload, FiExternalLink, FiX, FiCopy, FiInfo } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export const ImageModal = ({ image, onClose, onDownload }) => {
