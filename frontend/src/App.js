@@ -105,6 +105,32 @@ function App() {
               </div>
             )}
             <ImageGrid images={images} isLoading={loading} searchQuery={searchQuery} />
+            
+            {/* Load More Button */}
+            {searchQuery && images.length > 0 && hasMore && !loading && (
+              <div className="flex justify-center mt-12 mb-8">
+                <button
+                  onClick={loadMore}
+                  disabled={loadingMore}
+                  className="px-8 py-4 rounded-full font-medium transition-all duration-300"
+                  style={{
+                    backgroundColor: loadingMore ? '#E4E4E7' : '#1A1A1A',
+                    color: '#FFFFFF',
+                    fontFamily: 'Manrope, sans-serif',
+                    opacity: loadingMore ? 0.6 : 1,
+                    cursor: loadingMore ? 'not-allowed' : 'pointer'
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!loadingMore) e.target.style.transform = 'scale(1.05)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.transform = 'scale(1)';
+                  }}
+                >
+                  {loadingMore ? 'Carregando...' : 'Carregar Mais Imagens'}
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
