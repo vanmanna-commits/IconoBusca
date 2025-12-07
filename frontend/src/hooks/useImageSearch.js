@@ -30,7 +30,8 @@ export const useImageSearch = () => {
           query,
           page,
           per_page: 20,
-          sources: sourcesString
+          sources: sourcesString,
+          order_by: orderBy
         },
         timeout: 30000
       });
