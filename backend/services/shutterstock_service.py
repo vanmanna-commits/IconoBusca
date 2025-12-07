@@ -13,8 +13,11 @@ class ShutterstockService:
             return []
         
         try:
+            import base64
+            credentials = base64.b64encode(self.settings.shutterstock_api_key.encode()).decode()
+            
             headers = {
-                'Authorization': f'Bearer {self.settings.shutterstock_api_key}',
+                'Authorization': f'Basic {credentials}',
                 'User-Agent': 'LuminaSearchAPI/1.0'
             }
             params = {
