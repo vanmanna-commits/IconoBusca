@@ -3,6 +3,7 @@ import '@/App.css';
 import SearchBar from './components/SearchBar';
 import ImageGrid from './components/ImageGrid';
 import SourceFilter from './components/SourceFilter';
+import SortSelect from './components/SortSelect';
 import { useImageSearch } from './hooks/useImageSearch';
 
 function App() {
