@@ -66,8 +66,8 @@ export const ImageGrid = ({ images, isLoading, searchQuery }) => {
           transition={{ duration: 0.5 }}
         >
           <p 
-            className="text-xl font-light" 
-            style={{ fontFamily: 'Manrope, sans-serif', color: '#A1A1AA' }}
+            className="text-lg" 
+            style={{ fontFamily: 'Manrope, sans-serif', color: '#A1A1A1' }}
           >
             Digite algo para começar sua busca
           </p>
@@ -80,8 +80,8 @@ export const ImageGrid = ({ images, isLoading, searchQuery }) => {
     return (
       <div data-testid="no-results" className="text-center py-32">
         <p 
-          className="text-xl font-light" 
-          style={{ fontFamily: 'Manrope, sans-serif', color: '#A1A1AA' }}
+          className="text-lg" 
+          style={{ fontFamily: 'Manrope, sans-serif', color: '#A1A1A1' }}
         >
           Nenhuma imagem encontrada
         </p>
