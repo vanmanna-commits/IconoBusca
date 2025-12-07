@@ -10,13 +10,16 @@ function App() {
   const {
     images,
     loading,
+    loadingMore,
     error,
     selectedSources,
     totalResults,
     searchTime,
     searchQuery,
     sortBy,
+    hasMore,
     performSearch,
+    loadMore,
     setSelectedSources,
     setSortBy
   } = useImageSearch();
