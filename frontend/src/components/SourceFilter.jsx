@@ -4,11 +4,18 @@ import { Label } from '@/components/ui/label';
 import { FaGoogle, FaImages } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
-const SOURCES = [
+const FREE_SOURCES = [
   { id: 'google', label: 'Google Custom Search', icon: <FaGoogle className="w-4 h-4" /> },
   { id: 'unsplash', label: 'Unsplash', icon: <FaImages className="w-4 h-4" /> },
   { id: 'pexels', label: 'Pexels', icon: <FaImages className="w-4 h-4" /> },
   { id: 'pixabay', label: 'Pixabay', icon: <FaImages className="w-4 h-4" /> }
+];
+
+const PAID_SOURCES = [
+  { id: 'shutterstock', label: 'Shutterstock 💰', icon: <FaImages className="w-4 h-4" /> },
+  { id: 'getty_images', label: 'Getty Images 💰', icon: <FaImages className="w-4 h-4" /> },
+  { id: 'istock', label: 'iStock 💰', icon: <FaImages className="w-4 h-4" /> },
+  { id: 'pulsar_imagens', label: 'Pulsar Imagens 💰', icon: <FaImages className="w-4 h-4" /> }
 ];
 
 export const SourceFilter = ({ selectedSources, onChange }) => {
