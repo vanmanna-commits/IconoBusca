@@ -113,6 +113,10 @@ async def search_images(
     if "fabio_colombini" in source_list:
         tasks.append(colombini_service.search_images(query, page, per_page))
     
+    # Freepik
+    if "freepik" in source_list:
+        tasks.append(freepik_service.search_images(query, page, per_page))
+    
     results = await asyncio.gather(*tasks, return_exceptions=True)
     
     all_images = []
