@@ -36,28 +36,30 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#FFFFFF' }}>
+    <div className="min-h-screen" style={{ backgroundColor: '#121212' }}>
       {/* Hero Section */}
-      <div className="py-20 md:py-32">
+      <div className="py-16 md:py-24" style={{ 
+        background: 'linear-gradient(180deg, rgba(0,0,0,0.3) 0%, transparent 100%)'
+      }}>
         <div className="max-w-5xl mx-auto px-6 md:px-12 text-center">
           <h1 
             data-testid="main-heading"
-            className="text-5xl md:text-7xl font-medium tracking-tight leading-tight mb-6" 
-            style={{ 
-              fontFamily: 'Playfair Display, serif',
-              color: '#1A1A1A'
-            }}
-          >
-            Find the perfect image.
-          </h1>
-          <p 
-            className="text-lg md:text-xl leading-relaxed font-light mb-12" 
+            className="text-4xl md:text-5xl font-semibold tracking-tight leading-tight mb-4" 
             style={{ 
               fontFamily: 'Manrope, sans-serif',
-              color: '#71717A' 
+              color: '#FFFFFF'
             }}
           >
-            Busque em Unsplash, Pexels, Pixabay e mais fontes simultaneamente
+            Lumina Search
+          </h1>
+          <p 
+            className="text-base leading-relaxed mb-12" 
+            style={{ 
+              fontFamily: 'Manrope, sans-serif',
+              color: '#A1A1A1' 
+            }}
+          >
+            Busca profissional em múltiplas fontes simultaneamente
           </p>
 
           <SearchBar onSearch={handleSearch} isLoading={loading} />
