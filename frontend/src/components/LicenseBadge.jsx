@@ -89,9 +89,9 @@ export const LicenseBadge = ({ license, size = 'sm', showDescription = false }) 
     return (
       <a 
         href={info.url} 
-        target=\"_blank\" 
-        rel=\"noopener noreferrer\"
-        className=\"inline-block hover:opacity-80 transition-opacity\"
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="inline-block hover:opacity-80 transition-opacity"
         onClick={(e) => e.stopPropagation()}
       >
         {badge}
