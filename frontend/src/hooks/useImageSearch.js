@@ -31,6 +31,7 @@ export const useImageSearch = () => {
 
     try {
       const sourcesString = sources.join(',');
+      console.log('🔍 Buscando com fontes:', sourcesString);
       const response = await axios.get(`${BACKEND_URL}/api/search`, {
         params: {
           query,
@@ -41,6 +42,7 @@ export const useImageSearch = () => {
         },
         timeout: 30000
       });
+      console.log('✅ Resposta recebida:', response.data.total_results, 'imagens');
 
       if (append) {
         setImages(prev => [...prev, ...response.data.images]);
