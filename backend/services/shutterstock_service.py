@@ -48,12 +48,12 @@ class ShutterstockService:
             return []
         
         try:
-            access_token = await self._get_access_token()
-            if not access_token:
-                return []
+            # Tentar primeiro com Basic Auth (para contas Enterprise)
+            credentials = f"{self.settings.shutterstock_client_id}:{self.settings.shutterstock_client_secret}"
+            encoded_credentials = base64.b64encode(credentials.encode()).decode()
             
             headers = {
-                'Authorization': f'Bearer {access_token}',
+                'Authorization': f'Basic {encoded_credentials}',
                 'User-Agent': 'LuminaSearchAPI/1.0'
             }
             params = {
