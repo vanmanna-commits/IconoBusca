@@ -8,7 +8,7 @@ class PixabayService:
         self.settings = get_settings()
         self.base_url = "https://pixabay.com/api"
     
-    async def search_images(self, query: str, page: int = 1, per_page: int = 20) -> List[ImageSource]:
+    async def search_images(self, query: str, page: int = 1, per_page: int = 20, order_by: str = 'relevant') -> List[ImageSource]:
         if not self.settings.pixabay_api_key:
             return []
         
