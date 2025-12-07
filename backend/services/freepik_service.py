@@ -6,7 +6,7 @@ from schemas import ImageSource
 class FreepikService:
     def __init__(self):
         self.settings = get_settings()
-        self.base_url = "https://api.freepik.com/v1"
+        self.base_url = "https://api.freepik.com"
     
     async def search_images(self, query: str, page: int = 1, per_page: int = 20) -> List[ImageSource]:
         if not self.settings.freepik_api_key:
