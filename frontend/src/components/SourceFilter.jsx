@@ -4,33 +4,11 @@ import { Label } from '@/components/ui/label';
 import { motion } from 'framer-motion';
 
 const FREE_SOURCES = [
-  { id: 'google', label: 'Google' },
+  { id: 'google', label: 'Google Images' },
   { id: 'unsplash', label: 'Unsplash' },
   { id: 'pexels', label: 'Pexels' },
   { id: 'pixabay', label: 'Pixabay' },
-  { id: 'freepik', label: 'Freepik' },
   { id: 'creative_commons', label: 'Creative Commons' }
-];
-
-const PAID_SOURCES = [
-  { id: 'shutterstock', label: 'Shutterstock' },
-  { id: 'getty_images', label: 'Getty Images' },
-  { id: 'istock', label: 'iStock' },
-  { id: 'pulsar_imagens', label: 'Pulsar' }
-];
-
-const PAID_SOURCES_BR = [
-  { id: 'fotoarena', label: 'Foto Arena' },
-  { id: 'usp_imagens', label: 'USP' },
-  { id: 'tyba', label: 'Tyba' },
-  { id: 'natureza_brasileira', label: 'Natureza BR' },
-  { id: 'fabio_colombini', label: 'F. Colombini' }
-];
-
-const PUBLIC_SOURCES_BR = [
-  { id: 'agencia_brasil', label: 'Agência Brasil' },
-  { id: 'inpe', label: 'INPE Satélite' },
-  { id: 'ibge', label: 'IBGE Cidades' }
 ];
 
 export const SourceFilter = ({ selectedSources, onChange }) => {
