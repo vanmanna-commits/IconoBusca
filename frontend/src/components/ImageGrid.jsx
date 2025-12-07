@@ -1,23 +1,13 @@
 import React, { useState } from 'react';
 import ImageModal from './ImageModal';
 import { FiDownload } from 'react-icons/fi';
-import { FaGoogle, FaImages } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import Masonry from 'react-masonry-css';
 
-const SOURCE_ICONS = {
-  google: <FaGoogle className="w-4 h-4" />,
-  unsplash: <FaImages className="w-4 h-4" />,
-  pexels: <FaImages className="w-4 h-4" />,
-  pixabay: <FaImages className="w-4 h-4" />
-};
-
 const breakpointColumns = {
-  default: 4,
-  1536: 4,
+  default: 3,
   1280: 3,
-  1024: 3,
-  768: 2,
+  1024: 2,
   640: 1
 };
 
@@ -45,16 +35,16 @@ export const ImageGrid = ({ images, isLoading, searchQuery }) => {
     return (
       <Masonry
         breakpointCols={breakpointColumns}
-        className="flex gap-6 -ml-6"
-        columnClassName="pl-6 bg-clip-padding"
+        className="flex gap-8 -ml-8"
+        columnClassName="pl-8 bg-clip-padding"
       >
-        {[...Array(12)].map((_, i) => (
+        {[...Array(9)].map((_, i) => (
           <motion.div
             key={i}
-            className="rounded-lg mb-6 animate-pulse"
+            className="rounded-none mb-8 animate-pulse"
             style={{ 
-              backgroundColor: '#18181b',
-              height: `${200 + Math.random() * 100}px`
+              backgroundColor: '#F4F4F5',
+              height: `${250 + Math.random() * 150}px`
             }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -67,15 +57,17 @@ export const ImageGrid = ({ images, isLoading, searchQuery }) => {
 
   if (!searchQuery) {
     return (
-      <div data-testid="initial-state" className="text-center py-24">
+      <div data-testid="initial-state" className="text-center py-32">
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <FaImages className="w-24 h-24 mx-auto mb-6" style={{ color: '#52525b' }} />
-          <p className="text-xl" style={{ fontFamily: 'Inter, sans-serif', color: '#a1a1aa' }}>
-            Digite algo na busca para começar
+          <p 
+            className="text-xl font-light" 
+            style={{ fontFamily: 'Manrope, sans-serif', color: '#A1A1AA' }}
+          >
+            Digite algo para começar sua busca
           </p>
         </motion.div>
       </div>
@@ -84,9 +76,12 @@ export const ImageGrid = ({ images, isLoading, searchQuery }) => {
 
   if (!images || images.length === 0) {
     return (
-      <div data-testid="no-results" className="text-center py-24">
-        <p className="text-xl" style={{ fontFamily: 'Inter, sans-serif', color: '#a1a1aa' }}>
-          Nenhuma imagem encontrada. Tente outra busca.
+      <div data-testid="no-results" className="text-center py-32">
+        <p 
+          className="text-xl font-light" 
+          style={{ fontFamily: 'Manrope, sans-serif', color: '#A1A1AA' }}
+        >
+          Nenhuma imagem encontrada
         </p>
       </div>
     );
@@ -96,35 +91,33 @@ export const ImageGrid = ({ images, isLoading, searchQuery }) => {
     <>
       <Masonry
         breakpointCols={breakpointColumns}
-        className="flex gap-6 -ml-6"
-        columnClassName="pl-6 bg-clip-padding"
+        className="flex gap-8 -ml-8"
+        columnClassName="pl-8 bg-clip-padding"
       >
         {images.map((image, index) => (
           <motion.div
             key={`${image.source}-${image.image_id}`}
             data-testid="image-card"
-            className="group overflow-hidden rounded-lg mb-6"
-            style={{ backgroundColor: '#18181b' }}
+            className="group overflow-hidden mb-8"
+            style={{ backgroundColor: '#F4F4F5' }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: index * 0.03 }}
+            transition={{ duration: 0.5, delay: index * 0.03 }}
           >
             <div 
-              className="relative cursor-zoom-in overflow-hidden"
+              className="relative cursor-pointer overflow-hidden"
               onClick={() => setSelectedImage(image)}
             >
               <img
                 src={image.thumbnail_url}
                 alt={image.title}
-                className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
+                className="w-full h-auto object-cover transition-all duration-500 group-hover:scale-105"
                 loading="lazy"
                 style={{ display: 'block' }}
               />
               <div 
-                className="absolute inset-0 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                style={{
-                  background: 'linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%)'
-                }}
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+                style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}
               >
                 <button
                   data-testid="download-button"
@@ -132,37 +125,47 @@ export const ImageGrid = ({ images, isLoading, searchQuery }) => {
                     e.stopPropagation();
                     handleDownload(image);
                   }}
-                  className="p-2 rounded-full transition-colors self-end"
+                  className="p-3 rounded-full transition-all duration-300"
                   style={{
-                    backgroundColor: 'rgba(250, 250, 250, 0.9)',
-                    color: '#09090b'
+                    backgroundColor: '#1A1A1A',
+                    color: '#FFFFFF'
                   }}
+                  onMouseEnter={(e) => e.target.style.transform = 'scale(1.1)'}
+                  onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
                   aria-label="Download image"
                 >
-                  <FiDownload className="w-4 h-4" />
+                  <FiDownload className="w-5 h-5" />
                 </button>
               </div>
             </div>
             
-            <div className="p-3" style={{ backgroundColor: '#18181b' }}>
-              <div className="flex items-center justify-between mb-2">
-                <div 
-                  className="px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1"
-                  style={{ 
-                    backgroundColor: '#27272a',
-                    color: '#a1a1aa'
-                  }}
+            <div className="p-4" style={{ backgroundColor: '#FFFFFF' }}>
+              <div className="flex items-center justify-between mb-3">
+                <span 
+                  className="text-xs tracking-widest uppercase font-semibold"
+                  style={{ color: '#A1A1AA' }}
                 >
-                  {SOURCE_ICONS[image.source]}
                   {image.source}
-                </div>
+                </span>
+                {image.license === 'paid' && (
+                  <span 
+                    className="text-xs px-2 py-1 rounded-full"
+                    style={{ 
+                      backgroundColor: '#FEF3C7',
+                      color: '#92400E',
+                      fontWeight: 500
+                    }}
+                  >
+                    Pago
+                  </span>
+                )}
               </div>
               
               <h3 
-                className="text-sm font-medium mb-1 line-clamp-2"
+                className="text-sm font-medium mb-2 line-clamp-2"
                 style={{ 
-                  color: '#fafafa',
-                  fontFamily: 'Inter, sans-serif',
+                  color: '#1A1A1A',
+                  fontFamily: 'Manrope, sans-serif',
                   minHeight: '2.5rem'
                 }}
               >
@@ -171,25 +174,10 @@ export const ImageGrid = ({ images, isLoading, searchQuery }) => {
               
               {image.photographer && (
                 <p 
-                  className="text-xs line-clamp-1"
-                  style={{ 
-                    color: '#71717a',
-                    fontFamily: 'Inter, sans-serif'
-                  }}
+                  className="text-xs font-light"
+                  style={{ color: '#71717A' }}
                 >
-                  © {image.photographer}
-                </p>
-              )}
-              
-              {image.description && (
-                <p 
-                  className="text-xs mt-2 line-clamp-2"
-                  style={{ 
-                    color: '#52525b',
-                    fontFamily: 'Inter, sans-serif'
-                  }}
-                >
-                  {image.description}
+                  por {image.photographer}
                 </p>
               )}
             </div>

@@ -1,29 +1,28 @@
 import React from 'react';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
-import { FaGoogle, FaImages } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 const FREE_SOURCES = [
-  { id: 'google', label: 'Google Custom Search', icon: <FaGoogle className="w-4 h-4" /> },
-  { id: 'unsplash', label: 'Unsplash', icon: <FaImages className="w-4 h-4" /> },
-  { id: 'pexels', label: 'Pexels', icon: <FaImages className="w-4 h-4" /> },
-  { id: 'pixabay', label: 'Pixabay', icon: <FaImages className="w-4 h-4" /> }
+  { id: 'google', label: 'Google' },
+  { id: 'unsplash', label: 'Unsplash' },
+  { id: 'pexels', label: 'Pexels' },
+  { id: 'pixabay', label: 'Pixabay' }
 ];
 
 const PAID_SOURCES = [
-  { id: 'shutterstock', label: 'Shutterstock 💰', icon: <FaImages className="w-4 h-4" /> },
-  { id: 'getty_images', label: 'Getty Images 💰', icon: <FaImages className="w-4 h-4" /> },
-  { id: 'istock', label: 'iStock 💰', icon: <FaImages className="w-4 h-4" /> },
-  { id: 'pulsar_imagens', label: 'Pulsar Imagens 💰', icon: <FaImages className="w-4 h-4" /> }
+  { id: 'shutterstock', label: 'Shutterstock' },
+  { id: 'getty_images', label: 'Getty Images' },
+  { id: 'istock', label: 'iStock' },
+  { id: 'pulsar_imagens', label: 'Pulsar' }
 ];
 
 const PAID_SOURCES_BR = [
-  { id: 'fotoarena', label: 'Foto Arena 🇧🇷', icon: <FaImages className="w-4 h-4" /> },
-  { id: 'usp_imagens', label: 'USP Imagens 🇧🇷', icon: <FaImages className="w-4 h-4" /> },
-  { id: 'tyba', label: 'Tyba 🇧🇷', icon: <FaImages className="w-4 h-4" /> },
-  { id: 'natureza_brasileira', label: 'Natureza Brasileira 🇧🇷', icon: <FaImages className="w-4 h-4" /> },
-  { id: 'fabio_colombini', label: 'Fabio Colombini 🇧🇷', icon: <FaImages className="w-4 h-4" /> }
+  { id: 'fotoarena', label: 'Foto Arena' },
+  { id: 'usp_imagens', label: 'USP' },
+  { id: 'tyba', label: 'Tyba' },
+  { id: 'natureza_brasileira', label: 'Natureza BR' },
+  { id: 'fabio_colombini', label: 'F. Colombini' }
 ];
 
 export const SourceFilter = ({ selectedSources, onChange }) => {
@@ -36,27 +35,21 @@ export const SourceFilter = ({ selectedSources, onChange }) => {
 
   return (
     <motion.div 
-      className="p-6 rounded-lg"
-      style={{
-        backgroundColor: '#18181b',
-        border: '1px solid #27272a'
-      }}
+      className="sticky top-8"
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5 }}
     >
       <h3 
-        className="font-semibold text-sm mb-4"
+        className="text-xs tracking-widest uppercase font-semibold mb-6"
         style={{ 
           fontFamily: 'Manrope, sans-serif',
-          color: '#fafafa',
-          letterSpacing: '0.05em',
-          textTransform: 'uppercase'
+          color: '#71717A'
         }}
       >
         Fontes Gratuitas
       </h3>
-      <div className="space-y-3 mb-6">
+      <div className="space-y-3 mb-8">
         {FREE_SOURCES.map((source) => (
           <div key={source.id} className="flex items-center space-x-3">
             <Checkbox
@@ -64,37 +57,30 @@ export const SourceFilter = ({ selectedSources, onChange }) => {
               id={source.id}
               checked={selectedSources.includes(source.id)}
               onCheckedChange={() => handleSourceToggle(source.id)}
-              style={{
-                borderColor: '#3f3f46'
-              }}
             />
             <Label 
               htmlFor={source.id} 
-              className="cursor-pointer flex items-center gap-2"
+              className="cursor-pointer text-sm font-light"
               style={{ 
-                fontFamily: 'Inter, sans-serif',
-                color: '#d4d4d8',
-                fontSize: '0.875rem'
+                fontFamily: 'Manrope, sans-serif',
+                color: '#1A1A1A'
               }}
             >
-              {source.icon}
               {source.label}
             </Label>
           </div>
         ))}
       </div>
 
-      <div className="border-t pt-4" style={{ borderColor: '#27272a' }}>
+      <div className="border-t pt-6 mb-8" style={{ borderColor: '#E4E4E7' }}>
         <h3 
-          className="font-semibold text-sm mb-4"
+          className="text-xs tracking-widest uppercase font-semibold mb-6"
           style={{ 
             fontFamily: 'Manrope, sans-serif',
-            color: '#fafafa',
-            letterSpacing: '0.05em',
-            textTransform: 'uppercase'
+            color: '#71717A'
           }}
         >
-          Fontes Pagas Internacionais
+          Fontes Pagas
         </h3>
         <div className="space-y-3">
           {PAID_SOURCES.map((source) => (
@@ -104,20 +90,15 @@ export const SourceFilter = ({ selectedSources, onChange }) => {
                 id={source.id}
                 checked={selectedSources.includes(source.id)}
                 onCheckedChange={() => handleSourceToggle(source.id)}
-                style={{
-                  borderColor: '#3f3f46'
-                }}
               />
               <Label 
                 htmlFor={source.id} 
-                className="cursor-pointer flex items-center gap-2"
+                className="cursor-pointer text-sm font-light"
                 style={{ 
-                  fontFamily: 'Inter, sans-serif',
-                  color: '#d4d4d8',
-                  fontSize: '0.875rem'
+                  fontFamily: 'Manrope, sans-serif',
+                  color: '#1A1A1A'
                 }}
               >
-                {source.icon}
                 {source.label}
               </Label>
             </div>
@@ -125,17 +106,15 @@ export const SourceFilter = ({ selectedSources, onChange }) => {
         </div>
       </div>
 
-      <div className="border-t pt-4 mt-4" style={{ borderColor: '#27272a' }}>
+      <div className="border-t pt-6" style={{ borderColor: '#E4E4E7' }}>
         <h3 
-          className="font-semibold text-sm mb-4"
+          className="text-xs tracking-widest uppercase font-semibold mb-6"
           style={{ 
             fontFamily: 'Manrope, sans-serif',
-            color: '#fafafa',
-            letterSpacing: '0.05em',
-            textTransform: 'uppercase'
+            color: '#71717A'
           }}
         >
-          Fontes Pagas Brasileiras
+          Brasil 🇧🇷
         </h3>
         <div className="space-y-3">
           {PAID_SOURCES_BR.map((source) => (
@@ -145,27 +124,22 @@ export const SourceFilter = ({ selectedSources, onChange }) => {
                 id={source.id}
                 checked={selectedSources.includes(source.id)}
                 onCheckedChange={() => handleSourceToggle(source.id)}
-                style={{
-                  borderColor: '#3f3f46'
-                }}
               />
               <Label 
                 htmlFor={source.id} 
-                className="cursor-pointer flex items-center gap-2"
+                className="cursor-pointer text-sm font-light"
                 style={{ 
-                  fontFamily: 'Inter, sans-serif',
-                  color: '#d4d4d8',
-                  fontSize: '0.875rem'
+                  fontFamily: 'Manrope, sans-serif',
+                  color: '#1A1A1A'
                 }}
               >
-                {source.icon}
                 {source.label}
               </Label>
             </div>
           ))}
         </div>
-        <p className="text-xs mt-3" style={{ color: '#71717a' }}>
-          * Fontes pagas requerem API key e licença para download
+        <p className="text-xs mt-4 font-light" style={{ color: '#A1A1AA' }}>
+          * Requer API key
         </p>
       </div>
     </motion.div>

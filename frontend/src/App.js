@@ -23,65 +23,69 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#09090b' }}>
-      <div className="container mx-auto px-8 md:px-12 py-12">
-        <div className="text-center mb-12">
+    <div className="min-h-screen" style={{ backgroundColor: '#FFFFFF' }}>
+      {/* Hero Section */}
+      <div className="py-20 md:py-32">
+        <div className="max-w-5xl mx-auto px-6 md:px-12 text-center">
           <h1 
             data-testid="main-heading"
-            className="text-5xl lg:text-6xl font-extrabold mb-4" 
+            className="text-5xl md:text-7xl font-medium tracking-tight leading-tight mb-6" 
             style={{ 
-              fontFamily: 'Manrope, sans-serif',
-              color: '#fafafa',
-              letterSpacing: '-0.02em'
+              fontFamily: 'Playfair Display, serif',
+              color: '#1A1A1A'
             }}
           >
-            Lumina Search
+            Find the perfect image.
           </h1>
           <p 
-            className="text-lg" 
+            className="text-lg md:text-xl leading-relaxed font-light mb-12" 
             style={{ 
-              fontFamily: 'Inter, sans-serif',
-              color: '#a1a1aa' 
+              fontFamily: 'Manrope, sans-serif',
+              color: '#71717A' 
             }}
           >
-            Busque imagens em Google, Unsplash, Pexels e Pixabay simultaneamente
+            Busque em Unsplash, Pexels, Pixabay e mais fontes simultaneamente
           </p>
-        </div>
 
-        <div className="max-w-4xl mx-auto mb-12">
           <SearchBar onSearch={handleSearch} isLoading={loading} />
         </div>
+      </div>
 
-        {error && (
+      {error && (
+        <div className="max-w-7xl mx-auto px-6 md:px-12 mb-6">
           <div 
             data-testid="error-message"
-            className="mb-6 p-4 rounded-lg" 
-            style={{ backgroundColor: '#27272a', color: '#fca5a5', border: '1px solid #3f3f46' }}
+            className="p-4 rounded-lg" 
+            style={{ backgroundColor: '#FEE2E2', color: '#991B1B', border: '1px solid #FECACA' }}
           >
             {error}
           </div>
-        )}
+        </div>
+      )}
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-          <div className="lg:col-span-1">
+      {/* Filters and Results */}
+      <div className="max-w-7xl mx-auto px-6 md:px-12 pb-20">
+        <div className="flex flex-col lg:flex-row gap-12">
+          {/* Sidebar Filters */}
+          <div className="lg:w-64 flex-shrink-0">
             <SourceFilter
               selectedSources={selectedSources}
               onChange={setSelectedSources}
             />
           </div>
 
-          <div className="lg:col-span-4">
+          {/* Main Content */}
+          <div className="flex-1">
             {searchQuery && images.length > 0 && (
               <div 
                 data-testid="search-results-info"
-                className="mb-6" 
+                className="mb-8 text-xs tracking-widest uppercase font-semibold" 
                 style={{ 
-                  fontFamily: 'JetBrains Mono, monospace',
-                  fontSize: '0.875rem',
-                  color: '#a1a1aa' 
+                  fontFamily: 'Manrope, sans-serif',
+                  color: '#A1A1AA' 
                 }}
               >
-                {totalResults} imagens encontradas em {searchTime.toFixed(0)}ms
+                {totalResults} imagens · {searchTime.toFixed(0)}ms
               </div>
             )}
             <ImageGrid images={images} isLoading={loading} searchQuery={searchQuery} />

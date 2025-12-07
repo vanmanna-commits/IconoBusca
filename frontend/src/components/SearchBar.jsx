@@ -15,47 +15,46 @@ export const SearchBar = ({ onSearch, isLoading }) => {
   return (
     <motion.form 
       onSubmit={handleSubmit} 
-      className="w-full"
-      initial={{ opacity: 0, y: -20 }}
+      className="w-full max-w-3xl mx-auto"
+      initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.7 }}
     >
-      <div 
-        className="relative"
-        style={{
-          backgroundColor: 'rgba(24, 24, 27, 0.5)',
-          backdropFilter: 'blur(12px)',
-          borderRadius: '1rem',
-          border: '1px solid #27272a'
-        }}
-      >
+      <div className="relative">
         <input
           data-testid="search-input"
           type="text"
-          placeholder="Buscar imagens..."
+          placeholder="Search for images..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           disabled={isLoading}
-          className="w-full px-6 py-6 pr-24 text-xl rounded-2xl focus:outline-none focus:ring-2"
+          className="w-full h-16 text-lg px-0 py-4 bg-transparent border-b-2 focus:outline-none transition-colors"
           style={{
-            backgroundColor: 'transparent',
-            color: '#fafafa',
-            fontFamily: 'Inter, sans-serif',
-            border: 'none',
-            '::placeholder': { color: '#52525b' }
+            borderColor: '#E4E4E7',
+            color: '#1A1A1A',
+            fontFamily: 'Manrope, sans-serif'
           }}
+          onFocus={(e) => e.target.style.borderColor = '#1A1A1A'}
+          onBlur={(e) => e.target.style.borderColor = '#E4E4E7'}
         />
         <button
           data-testid="search-button"
           type="submit"
           disabled={isLoading || !query.trim()}
-          className="absolute right-3 top-1/2 transform -translate-y-1/2 px-6 py-3 rounded-full font-medium transition-all duration-200"
+          className="absolute right-0 top-1/2 transform -translate-y-1/2 p-3 rounded-full transition-all duration-300"
           style={{
-            backgroundColor: '#fafafa',
-            color: '#09090b',
-            fontFamily: 'Inter, sans-serif',
+            backgroundColor: isLoading || !query.trim() ? '#E4E4E7' : '#1A1A1A',
+            color: '#FFFFFF',
             opacity: isLoading || !query.trim() ? 0.5 : 1,
             cursor: isLoading || !query.trim() ? 'not-allowed' : 'pointer'
+          }}
+          onMouseEnter={(e) => {
+            if (!isLoading && query.trim()) {
+              e.target.style.transform = 'translateY(-50%) scale(1.05)';
+            }
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.transform = 'translateY(-50%) scale(1)';
           }}
         >
           <FiSearch className="w-5 h-5" />
