@@ -93,18 +93,21 @@ export const ImageGrid = ({ images, isLoading, searchQuery }) => {
     <>
       <Masonry
         breakpointCols={breakpointColumns}
-        className="flex gap-8 -ml-8"
-        columnClassName="pl-8 bg-clip-padding"
+        className="flex gap-6 -ml-6"
+        columnClassName="pl-6 bg-clip-padding"
       >
         {images.map((image, index) => (
           <motion.div
             key={`${image.source}-${image.image_id}`}
             data-testid="image-card"
-            className="group overflow-hidden mb-8"
-            style={{ backgroundColor: '#F4F4F5' }}
+            className="group overflow-hidden rounded-lg mb-6"
+            style={{ 
+              backgroundColor: '#1C1C1C',
+              border: '1px solid #2A2A2A'
+            }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.03 }}
+            transition={{ duration: 0.4, delay: index * 0.02 }}
           >
             <div 
               className="relative cursor-pointer overflow-hidden"
