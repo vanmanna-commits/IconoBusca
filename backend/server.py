@@ -88,11 +88,11 @@ async def search_images(
     if "google" in source_list:
         tasks.append(google_service.search_images(query, page, per_page))
     if "unsplash" in source_list:
-        tasks.append(unsplash_service.search_images(query, page, per_page))
+        tasks.append(unsplash_service.search_images(query, page, per_page, order_by))
     if "pexels" in source_list:
-        tasks.append(pexels_service.search_images(query, page, per_page))
+        tasks.append(pexels_service.search_images(query, page, per_page, order_by))
     if "pixabay" in source_list:
-        tasks.append(pixabay_service.search_images(query, page, per_page))
+        tasks.append(pixabay_service.search_images(query, page, per_page, order_by))
     
     # Fontes pagas internacionais
     if "shutterstock" in source_list:
