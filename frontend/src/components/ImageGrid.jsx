@@ -161,7 +161,7 @@ export const ImageGrid = ({ images, isLoading, searchQuery }) => {
                     fontFamily: 'JetBrains Mono, monospace'
                   }}
                 >
-                  {image.source}
+                  {getSourceLabel(image.source)}
                 </span>
                 <LicenseBadge license={image.license} size="xs" />
               </div>
