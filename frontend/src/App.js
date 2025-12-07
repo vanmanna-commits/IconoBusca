@@ -1,52 +1,93 @@
-import { useEffect } from "react";
-import "@/App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
-
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
-
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
-
-  useEffect(() => {
-    helloWorldApi();
-  }, []);
-
-  return (
-    <div>
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
-    </div>
-  );
-};
+import { useState } from 'react';
+import '@/App.css';
+import SearchBar from './components/SearchBar';
+import ImageGrid from './components/ImageGrid';
+import SourceFilter from './components/SourceFilter';
+import { useImageSearch } from './hooks/useImageSearch';
 
 function App() {
+  const {
+    images,
+    loading,
+    error,
+    selectedSources,
+    totalResults,
+    searchTime,
+    searchQuery,
+    performSearch,
+    setSelectedSources
+  } = useImageSearch();
+
+  const handleSearch = async (query) => {
+    await performSearch(query, 1, selectedSources);
+  };
+
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+    <div className="min-h-screen" style={{ backgroundColor: '#09090b' }}>
+      <div className="container mx-auto px-8 md:px-12 py-12">
+        <div className="text-center mb-12">
+          <h1 
+            data-testid="main-heading"
+            className="text-5xl lg:text-6xl font-extrabold mb-4" 
+            style={{ 
+              fontFamily: 'Manrope, sans-serif',
+              color: '#fafafa',
+              letterSpacing: '-0.02em'
+            }}
+          >
+            Lumina Search
+          </h1>
+          <p 
+            className="text-lg" 
+            style={{ 
+              fontFamily: 'Inter, sans-serif',
+              color: '#a1a1aa' 
+            }}
+          >
+            Busque imagens em Google, Unsplash, Pexels e Pixabay simultaneamente
+          </p>
+        </div>
+
+        <div className="max-w-4xl mx-auto mb-12">
+          <SearchBar onSearch={handleSearch} isLoading={loading} />
+        </div>
+
+        {error && (
+          <div 
+            data-testid="error-message"
+            className="mb-6 p-4 rounded-lg" 
+            style={{ backgroundColor: '#27272a', color: '#fca5a5', border: '1px solid #3f3f46' }}
+          >
+            {error}
+          </div>
+        )}
+
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+          <div className="lg:col-span-1">
+            <SourceFilter
+              selectedSources={selectedSources}
+              onChange={setSelectedSources}
+            />
+          </div>
+
+          <div className="lg:col-span-4">
+            {searchQuery && images.length > 0 && (
+              <div 
+                data-testid="search-results-info"
+                className="mb-6" 
+                style={{ 
+                  fontFamily: 'JetBrains Mono, monospace',
+                  fontSize: '0.875rem',
+                  color: '#a1a1aa' 
+                }}
+              >
+                {totalResults} imagens encontradas em {searchTime.toFixed(0)}ms
+              </div>
+            )}
+            <ImageGrid images={images} isLoading={loading} searchQuery={searchQuery} />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
