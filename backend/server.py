@@ -49,7 +49,12 @@ async def get_available_sources():
             {"id": "shutterstock", "name": "Shutterstock", "available": bool(settings.shutterstock_api_key)},
             {"id": "getty_images", "name": "Getty Images", "available": bool(settings.getty_images_api_key)},
             {"id": "istock", "name": "iStock", "available": bool(settings.istock_api_key)},
-            {"id": "pulsar_imagens", "name": "Pulsar Imagens", "available": bool(settings.pulsar_imagens_api_key)}
+            {"id": "pulsar_imagens", "name": "Pulsar Imagens", "available": bool(settings.pulsar_imagens_api_key)},
+            {"id": "fotoarena", "name": "Foto Arena", "available": bool(settings.fotoarena_api_key)},
+            {"id": "usp_imagens", "name": "USP Imagens", "available": bool(settings.usp_imagens_api_key)},
+            {"id": "tyba", "name": "Tyba", "available": bool(settings.tyba_api_key)},
+            {"id": "natureza_brasileira", "name": "Natureza Brasileira", "available": bool(settings.natureza_brasileira_api_key)},
+            {"id": "fabio_colombini", "name": "Fabio Colombini", "available": bool(settings.fabio_colombini_api_key)}
         ]
     }
     return sources
