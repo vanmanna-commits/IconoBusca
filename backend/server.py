@@ -119,6 +119,10 @@ async def search_images(
     if "freepik" in source_list:
         tasks.append(freepik_service.search_images(query, page, per_page))
     
+    # Creative Commons
+    if "creative_commons" in source_list:
+        tasks.append(creative_commons_service.search_images(query, page, per_page))
+    
     results = await asyncio.gather(*tasks, return_exceptions=True)
     
     all_images = []
