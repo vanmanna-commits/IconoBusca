@@ -46,7 +46,7 @@ async def get_available_sources():
             {"id": "pixabay", "name": "Pixabay", "available": bool(settings.pixabay_api_key)}
         ],
         "paid": [
-            {"id": "shutterstock", "name": "Shutterstock", "available": bool(settings.shutterstock_api_key)},
+            {"id": "shutterstock", "name": "Shutterstock", "available": bool(settings.shutterstock_client_id and settings.shutterstock_client_secret)},
             {"id": "getty_images", "name": "Getty Images", "available": bool(settings.getty_images_api_key)},
             {"id": "istock", "name": "iStock", "available": bool(settings.istock_api_key)},
             {"id": "pulsar_imagens", "name": "Pulsar Imagens", "available": bool(settings.pulsar_imagens_api_key)},
