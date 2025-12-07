@@ -73,6 +73,7 @@ export const useImageSearch = () => {
   return {
     images,
     loading,
+    loadingMore,
     error,
     searchQuery,
     currentPage,
@@ -80,7 +81,9 @@ export const useImageSearch = () => {
     totalResults,
     searchTime,
     sortBy,
+    hasMore,
     performSearch,
+    loadMore,
     setSelectedSources,
     setCurrentPage,
     setSortBy
