@@ -18,6 +18,7 @@ from services.tyba_service import tyba_service
 from services.natureza_brasileira_service import natureza_brasileira_service
 from services.colombini_service import colombini_service
 from services.freepik_service import freepik_service
+from services.creative_commons_service import creative_commons_service
 
 app = FastAPI(title="Lumina Search API")
 
