@@ -55,7 +55,8 @@ async def get_available_sources():
             {"id": "usp_imagens", "name": "USP Imagens", "available": bool(settings.usp_imagens_api_key)},
             {"id": "tyba", "name": "Tyba", "available": bool(settings.tyba_api_key)},
             {"id": "natureza_brasileira", "name": "Natureza Brasileira", "available": bool(settings.natureza_brasileira_api_key)},
-            {"id": "fabio_colombini", "name": "Fabio Colombini", "available": bool(settings.fabio_colombini_api_key)}
+            {"id": "fabio_colombini", "name": "Fabio Colombini", "available": bool(settings.fabio_colombini_api_key)},
+            {"id": "freepik", "name": "Freepik", "available": bool(settings.freepik_api_key)}
         ]
     }
     return sources
