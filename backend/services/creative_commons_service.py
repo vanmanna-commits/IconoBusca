@@ -21,7 +21,7 @@ class CreativeCommonsService:
             if license_type:
                 params['license_type'] = license_type
             
-            async with httpx.AsyncClient() as client:
+            async with httpx.AsyncClient(follow_redirects=True) as client:
                 response = await client.get(
                     f"{self.base_url}/images",
                     params=params,
