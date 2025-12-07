@@ -12,8 +12,9 @@ export const useImageSearch = () => {
   const [selectedSources, setSelectedSources] = useState(['google', 'unsplash', 'pexels', 'pixabay']);
   const [totalResults, setTotalResults] = useState(0);
   const [searchTime, setSearchTime] = useState(0);
+  const [sortBy, setSortBy] = useState('relevant');
 
-  const performSearch = useCallback(async (query, page = 1, sources = selectedSources) => {
+  const performSearch = useCallback(async (query, page = 1, sources = selectedSources, orderBy = sortBy) => {
     if (!query.trim()) {
       setError('Por favor, insira uma consulta de busca');
       return;
