@@ -14,21 +14,19 @@ class FreepikService:
         
         try:
             headers = {
-                'x-freepik-api-key': self.settings.freepik_api_key,
                 'Accept-Language': 'en-US',
-                'Content-Type': 'application/json'
+                'Accept': 'application/json'
             }
             params = {
-                'locale': 'en-US',
+                'apikey': self.settings.freepik_api_key,
                 'term': query,
                 'page': page,
-                'limit': min(per_page, 200),
-                'order': 'latest'
+                'per_page': min(per_page, 200)
             }
             
-            async with httpx.AsyncClient() as client:
+            async with httpx.AsyncClient(follow_redirects=True) as client:
                 response = await client.get(
-                    f"{self.base_url}/resources",
+                    f"{self.base_url}/v1/resources",
                     headers=headers,
                     params=params,
                     timeout=15.0
