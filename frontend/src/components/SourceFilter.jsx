@@ -33,9 +33,9 @@ export const SourceFilter = ({ selectedSources, onChange }) => {
           color: '#71717A'
         }}
       >
-        Fontes Gratuitas
+        Fontes de Imagens
       </h3>
-      <div className="space-y-3 mb-8">
+      <div className="space-y-3">
         {FREE_SOURCES.map((source) => (
           <div key={source.id} className="flex items-center space-x-3">
             <Checkbox
@@ -56,114 +56,6 @@ export const SourceFilter = ({ selectedSources, onChange }) => {
             </Label>
           </div>
         ))}
-      </div>
-
-      <div className="border-t pt-6 mb-8" style={{ borderColor: '#E4E4E7' }}>
-        <h3 
-          className="text-xs tracking-widest uppercase font-semibold mb-6"
-          style={{ 
-            fontFamily: 'Manrope, sans-serif',
-            color: '#71717A'
-          }}
-        >
-          Fontes Pagas
-        </h3>
-        <div className="space-y-3">
-          {PAID_SOURCES.map((source) => (
-            <div key={source.id} className="flex items-center space-x-3">
-              <Checkbox
-                data-testid={`source-checkbox-${source.id}`}
-                id={source.id}
-                checked={selectedSources.includes(source.id)}
-                onCheckedChange={() => handleSourceToggle(source.id)}
-              />
-              <Label 
-                htmlFor={source.id} 
-                className="cursor-pointer text-sm font-light"
-                style={{ 
-                  fontFamily: 'Manrope, sans-serif',
-                  color: '#1A1A1A'
-                }}
-              >
-                {source.label}
-              </Label>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="border-t pt-6" style={{ borderColor: '#E4E4E7' }}>
-        <h3 
-          className="text-xs tracking-widest uppercase font-semibold mb-6"
-          style={{ 
-            fontFamily: 'Manrope, sans-serif',
-            color: '#71717A'
-          }}
-        >
-          Brasil Pagas 🇧🇷
-        </h3>
-        <div className="space-y-3">
-          {PAID_SOURCES_BR.map((source) => (
-            <div key={source.id} className="flex items-center space-x-3">
-              <Checkbox
-                data-testid={`source-checkbox-${source.id}`}
-                id={source.id}
-                checked={selectedSources.includes(source.id)}
-                onCheckedChange={() => handleSourceToggle(source.id)}
-              />
-              <Label 
-                htmlFor={source.id} 
-                className="cursor-pointer text-sm font-light"
-                style={{ 
-                  fontFamily: 'Manrope, sans-serif',
-                  color: '#1A1A1A'
-                }}
-              >
-                {source.label}
-              </Label>
-            </div>
-          ))}
-        </div>
-        <p className="text-xs mt-4 font-light" style={{ color: '#A1A1AA' }}>
-          * Requer API key
-        </p>
-      </div>
-
-      <div className="border-t pt-6 mt-4" style={{ borderColor: '#E4E4E7' }}>
-        <h3 
-          className="text-xs tracking-widest uppercase font-semibold mb-6"
-          style={{ 
-            fontFamily: 'Manrope, sans-serif',
-            color: '#71717A'
-          }}
-        >
-          Brasil Públicas 🇧🇷
-        </h3>
-        <div className="space-y-3">
-          {PUBLIC_SOURCES_BR.map((source) => (
-            <div key={source.id} className="flex items-center space-x-3">
-              <Checkbox
-                data-testid={`source-checkbox-${source.id}`}
-                id={source.id}
-                checked={selectedSources.includes(source.id)}
-                onCheckedChange={() => handleSourceToggle(source.id)}
-              />
-              <Label 
-                htmlFor={source.id} 
-                className="cursor-pointer text-sm font-light"
-                style={{ 
-                  fontFamily: 'Manrope, sans-serif',
-                  color: '#1A1A1A'
-                }}
-              >
-                {source.label}
-              </Label>
-            </div>
-          ))}
-        </div>
-        <p className="text-xs mt-4 font-light" style={{ color: '#A1A1AA' }}>
-          * Aguardando APIs públicas
-        </p>
       </div>
     </motion.div>
   );
