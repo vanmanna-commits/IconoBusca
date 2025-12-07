@@ -14,7 +14,8 @@ class Settings(BaseSettings):
     pixabay_api_key: str = ""
     
     # APIs Pagas Internacionais
-    shutterstock_api_key: str = ""
+    shutterstock_client_id: str = ""
+    shutterstock_client_secret: str = ""
     getty_images_api_key: str = ""
     istock_api_key: str = ""
     pulsar_imagens_api_key: str = ""
