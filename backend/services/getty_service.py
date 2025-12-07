@@ -2,6 +2,7 @@ import httpx
 from typing import List
 from config import get_settings
 from schemas import ImageSource
+import base64
 
 class GettyImagesService:
     def __init__(self):
@@ -13,7 +14,11 @@ class GettyImagesService:
             return []
         
         try:
+            # Getty Images usa Basic Auth ou Api-Key header
+            encoded_credentials = base64.b64encode(self.settings.getty_images_api_key.encode()).decode()
+            
             headers = {
+                'Authorization': f'Basic {encoded_credentials}',
                 'Api-Key': self.settings.getty_images_api_key,
                 'Accept': 'application/json'
             }
@@ -21,7 +26,7 @@ class GettyImagesService:
                 'phrase': query,
                 'page': page,
                 'page_size': min(per_page, 100),
-                'fields': 'id,title,caption,thumb,preview'
+                'fields': 'id,title,caption,display_sizes'
             }
             
             async with httpx.AsyncClient() as client:
