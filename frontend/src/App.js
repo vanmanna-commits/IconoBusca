@@ -114,16 +114,17 @@ function App() {
                 <button
                   onClick={loadMore}
                   disabled={loadingMore}
-                  className="px-8 py-4 rounded-full font-medium transition-all duration-300"
+                  className="px-8 py-3 rounded-lg font-medium transition-all duration-300"
                   style={{
-                    backgroundColor: loadingMore ? '#E4E4E7' : '#1A1A1A',
-                    color: '#FFFFFF',
+                    backgroundColor: loadingMore ? '#2A2A2A' : '#FFFFFF',
+                    color: loadingMore ? '#666666' : '#000000',
                     fontFamily: 'Manrope, sans-serif',
                     opacity: loadingMore ? 0.6 : 1,
-                    cursor: loadingMore ? 'not-allowed' : 'pointer'
+                    cursor: loadingMore ? 'not-allowed' : 'pointer',
+                    border: '1px solid rgba(255, 255, 255, 0.1)'
                   }}
                   onMouseEnter={(e) => {
-                    if (!loadingMore) e.target.style.transform = 'scale(1.05)';
+                    if (!loadingMore) e.target.style.transform = 'scale(1.02)';
                   }}
                   onMouseLeave={(e) => {
                     e.target.style.transform = 'scale(1)';
