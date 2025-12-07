@@ -12,6 +12,14 @@ const breakpointColumns = {
   640: 1
 };
 
+const getSourceLabel = (source) => {
+  // Normalize source labels for display
+  if (source.startsWith('cc_')) {
+    return 'creative commons';
+  }
+  return source;
+};
+
 export const ImageGrid = ({ images, isLoading, searchQuery }) => {
   const [selectedImage, setSelectedImage] = useState(null);
 
