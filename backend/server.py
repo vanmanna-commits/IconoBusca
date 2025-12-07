@@ -73,7 +73,7 @@ async def get_available_sources():
 async def search_images(
     query: str = Query(..., min_length=1, max_length=100),
     page: int = Query(1, ge=1),
-    per_page: int = Query(20, ge=1, le=50),
+    per_page: int = Query(50, ge=1, le=100),
     sources: str = Query("google,unsplash,pexels,pixabay"),
     order_by: str = Query("relevant", regex="^(relevant|latest|oldest)$")
 ):
