@@ -18,35 +18,42 @@ export const SearchBar = ({ onSearch, isLoading }) => {
       className="w-full max-w-3xl mx-auto"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7 }}
+      transition={{ duration: 0.5 }}
     >
-      <div className="relative">
+      <div 
+        className="relative" 
+        style={{
+          backgroundColor: 'rgba(0, 0, 0, 0.3)',
+          backdropFilter: 'blur(12px)',
+          border: '1px solid rgba(255, 255, 255, 0.05)',
+          borderRadius: '0.5rem'
+        }}
+      >
         <input
           data-testid="search-input"
           type="text"
-          placeholder="Search for images..."
+          placeholder="Buscar imagens..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           disabled={isLoading}
-          className="w-full h-16 text-lg px-0 py-4 bg-transparent border-b-2 focus:outline-none transition-colors"
+          className="w-full h-14 text-base px-6 py-4 pr-16 bg-transparent focus:outline-none"
           style={{
-            borderColor: '#E4E4E7',
-            color: '#1A1A1A',
-            fontFamily: 'Manrope, sans-serif'
+            color: '#FFFFFF',
+            fontFamily: 'Manrope, sans-serif',
+            border: 'none'
           }}
-          onFocus={(e) => e.target.style.borderColor = '#1A1A1A'}
-          onBlur={(e) => e.target.style.borderColor = '#E4E4E7'}
         />
         <button
           data-testid="search-button"
           type="submit"
           disabled={isLoading || !query.trim()}
-          className="absolute right-0 top-1/2 transform -translate-y-1/2 p-3 rounded-full transition-all duration-300"
+          className="absolute right-3 top-1/2 transform -translate-y-1/2 p-2.5 transition-all duration-300"
           style={{
-            backgroundColor: isLoading || !query.trim() ? '#E4E4E7' : '#1A1A1A',
-            color: '#FFFFFF',
+            backgroundColor: isLoading || !query.trim() ? '#2A2A2A' : '#FFFFFF',
+            color: isLoading || !query.trim() ? '#666666' : '#000000',
             opacity: isLoading || !query.trim() ? 0.5 : 1,
-            cursor: isLoading || !query.trim() ? 'not-allowed' : 'pointer'
+            cursor: isLoading || !query.trim() ? 'not-allowed' : 'pointer',
+            borderRadius: '0.375rem'
           }}
           onMouseEnter={(e) => {
             if (!isLoading && query.trim()) {
