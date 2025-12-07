@@ -13,13 +13,18 @@ class PixabayService:
             return []
         
         try:
+            # Mapear ordenação para formato Pixabay
+            pixabay_order = 'popular'
+            if order_by == 'latest':
+                pixabay_order = 'latest'
+            
             params = {
                 'key': self.settings.pixabay_api_key,
                 'q': query,
                 'page': page,
                 'per_page': min(per_page, 200),
                 'image_type': 'photo',
-                'order': 'popular'
+                'order': pixabay_order
             }
             
             async with httpx.AsyncClient(follow_redirects=True) as client:
