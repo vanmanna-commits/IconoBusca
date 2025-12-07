@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ImageModal from './ImageModal';
+import LicenseBadge from './LicenseBadge';
 import { FiDownload } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 import Masonry from 'react-masonry-css';
