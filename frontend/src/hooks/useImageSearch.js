@@ -10,7 +10,7 @@ export const useImageSearch = () => {
   const [error, setError] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedSources, setSelectedSources] = useState(['google', 'unsplash', 'pexels', 'pixabay']);
+  const [selectedSources, setSelectedSources] = useState(['google', 'unsplash', 'pexels', 'pixabay', 'creative_commons']);
   const [totalResults, setTotalResults] = useState(0);
   const [searchTime, setSearchTime] = useState(0);
   const [sortBy, setSortBy] = useState('relevant');
