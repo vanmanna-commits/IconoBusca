@@ -225,7 +225,8 @@ def main():
     if tester.failed_tests:
         print("\n❌ FAILED TESTS:")
         for test in tester.failed_tests:
-            print(f"  - {test['name']}: {test.get('error', f'Expected {test.get(\"expected\")}, got {test.get(\"actual\")}')}")
+            error_msg = test.get('error', f"Expected {test.get('expected')}, got {test.get('actual')}")
+            print(f"  - {test['name']}: {error_msg}")
     
     # Source-specific results
     print("\n📈 SOURCE PERFORMANCE:")
