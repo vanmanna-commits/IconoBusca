@@ -13,11 +13,18 @@ class Settings(BaseSettings):
     pexels_api_key: str = ""
     pixabay_api_key: str = ""
     
-    # APIs Pagas
+    # APIs Pagas Internacionais
     shutterstock_api_key: str = ""
     getty_images_api_key: str = ""
     istock_api_key: str = ""
     pulsar_imagens_api_key: str = ""
+    
+    # APIs Pagas Brasileiras
+    fotoarena_api_key: str = ""
+    usp_imagens_api_key: str = ""
+    tyba_api_key: str = ""
+    natureza_brasileira_api_key: str = ""
+    fabio_colombini_api_key: str = ""
     
     # Database
     mongo_url: str = "mongodb://localhost:27017"
