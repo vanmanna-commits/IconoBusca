@@ -27,6 +27,9 @@ class Settings(BaseSettings):
     natureza_brasileira_api_key: str = ""
     fabio_colombini_api_key: str = ""
     
+    # Freepik
+    freepik_api_key: str = ""
+    
     # Database
     mongo_url: str = "mongodb://localhost:27017"
     db_name: str = "image_search"
