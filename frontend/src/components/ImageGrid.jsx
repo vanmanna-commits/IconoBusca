@@ -36,16 +36,17 @@ export const ImageGrid = ({ images, isLoading, searchQuery }) => {
     return (
       <Masonry
         breakpointCols={breakpointColumns}
-        className="flex gap-8 -ml-8"
-        columnClassName="pl-8 bg-clip-padding"
+        className="flex gap-6 -ml-6"
+        columnClassName="pl-6 bg-clip-padding"
       >
         {[...Array(9)].map((_, i) => (
           <motion.div
             key={i}
-            className="rounded-none mb-8 animate-pulse"
+            className="rounded-lg mb-6 animate-pulse"
             style={{ 
-              backgroundColor: '#F4F4F5',
-              height: `${250 + Math.random() * 150}px`
+              backgroundColor: '#1C1C1C',
+              height: `${250 + Math.random() * 150}px`,
+              border: '1px solid #2A2A2A'
             }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
