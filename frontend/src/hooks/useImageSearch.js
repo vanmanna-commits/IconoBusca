@@ -52,7 +52,8 @@ export const useImageSearch = () => {
       setSearchTime(response.data.search_time_ms);
       setSearchQuery(query);
       setCurrentPage(page);
-      setHasMore(response.data.images.length === 50 * sources.length);
+      // Considerar que há mais resultados se recebemos imagens
+      setHasMore(response.data.images.length > 0);
     } catch (err) {
       setError(err.response?.data?.detail || 'Falha ao buscar imagens');
       if (!append) {
