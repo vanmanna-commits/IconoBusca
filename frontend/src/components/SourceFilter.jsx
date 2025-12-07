@@ -46,10 +46,10 @@ export const SourceFilter = ({ selectedSources, onChange }) => {
           textTransform: 'uppercase'
         }}
       >
-        Fontes de Imagens
+        Fontes Gratuitas
       </h3>
-      <div className="space-y-3">
-        {SOURCES.map((source) => (
+      <div className="space-y-3 mb-6">
+        {FREE_SOURCES.map((source) => (
           <div key={source.id} className="flex items-center space-x-3">
             <Checkbox
               data-testid={`source-checkbox-${source.id}`}
@@ -74,6 +74,50 @@ export const SourceFilter = ({ selectedSources, onChange }) => {
             </Label>
           </div>
         ))}
+      </div>
+
+      <div className="border-t pt-4" style={{ borderColor: '#27272a' }}>
+        <h3 
+          className="font-semibold text-sm mb-4"
+          style={{ 
+            fontFamily: 'Manrope, sans-serif',
+            color: '#fafafa',
+            letterSpacing: '0.05em',
+            textTransform: 'uppercase'
+          }}
+        >
+          Fontes Pagas
+        </h3>
+        <div className="space-y-3">
+          {PAID_SOURCES.map((source) => (
+            <div key={source.id} className="flex items-center space-x-3">
+              <Checkbox
+                data-testid={`source-checkbox-${source.id}`}
+                id={source.id}
+                checked={selectedSources.includes(source.id)}
+                onCheckedChange={() => handleSourceToggle(source.id)}
+                style={{
+                  borderColor: '#3f3f46'
+                }}
+              />
+              <Label 
+                htmlFor={source.id} 
+                className="cursor-pointer flex items-center gap-2"
+                style={{ 
+                  fontFamily: 'Inter, sans-serif',
+                  color: '#d4d4d8',
+                  fontSize: '0.875rem'
+                }}
+              >
+                {source.icon}
+                {source.label}
+              </Label>
+            </div>
+          ))}
+        </div>
+        <p className="text-xs mt-3" style={{ color: '#71717a' }}>
+          * Fontes pagas requerem API key e licença para download
+        </p>
       </div>
     </motion.div>
   );
