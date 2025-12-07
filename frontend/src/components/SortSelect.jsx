@@ -20,10 +20,10 @@ export const SortSelect = ({ value, onChange }) => {
         className="text-sm font-medium"
         style={{ 
           fontFamily: 'Manrope, sans-serif',
-          color: '#71717A'
+          color: '#A1A1A1'
         }}
       >
-        Ordenar por:
+        Ordenar:
       </label>
       <select
         id="sort-select"
@@ -32,18 +32,16 @@ export const SortSelect = ({ value, onChange }) => {
         className="px-4 py-2 rounded-lg text-sm font-medium transition-all cursor-pointer"
         style={{
           fontFamily: 'Manrope, sans-serif',
-          backgroundColor: '#F4F4F5',
-          color: '#1A1A1A',
-          border: '1px solid #E4E4E7',
+          backgroundColor: '#1C1C1C',
+          color: '#FFFFFF',
+          border: '1px solid #2A2A2A',
           outline: 'none'
         }}
         onFocus={(e) => {
-          e.target.style.borderColor = '#1A1A1A';
-          e.target.style.backgroundColor = '#FFFFFF';
+          e.target.style.borderColor = '#3A3A3A';
         }}
         onBlur={(e) => {
-          e.target.style.borderColor = '#E4E4E7';
-          e.target.style.backgroundColor = '#F4F4F5';
+          e.target.style.borderColor = '#2A2A2A';
         }}
       >
         {SORT_OPTIONS.map(option => (
