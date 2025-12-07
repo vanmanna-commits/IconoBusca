@@ -89,7 +89,7 @@ async def search_images(
     if "pixabay" in source_list:
         tasks.append(pixabay_service.search_images(query, page, per_page))
     
-    # Fontes pagas
+    # Fontes pagas internacionais
     if "shutterstock" in source_list:
         tasks.append(shutterstock_service.search_images(query, page, per_page))
     if "getty_images" in source_list:
@@ -98,6 +98,18 @@ async def search_images(
         tasks.append(istock_service.search_images(query, page, per_page))
     if "pulsar_imagens" in source_list:
         tasks.append(pulsar_service.search_images(query, page, per_page))
+    
+    # Fontes pagas brasileiras
+    if "fotoarena" in source_list:
+        tasks.append(fotoarena_service.search_images(query, page, per_page))
+    if "usp_imagens" in source_list:
+        tasks.append(usp_service.search_images(query, page, per_page))
+    if "tyba" in source_list:
+        tasks.append(tyba_service.search_images(query, page, per_page))
+    if "natureza_brasileira" in source_list:
+        tasks.append(natureza_brasileira_service.search_images(query, page, per_page))
+    if "fabio_colombini" in source_list:
+        tasks.append(colombini_service.search_images(query, page, per_page))
     
     results = await asyncio.gather(*tasks, return_exceptions=True)
     
