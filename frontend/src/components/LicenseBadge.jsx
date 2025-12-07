@@ -81,7 +81,7 @@ export const LicenseBadge = ({ license, size = 'sm', showDescription = false }) 
       title={info.description}
     >
       {info.label}
-      {showDescription && <span className=\"text-xs opacity-75\">· {info.description}</span>}
+      {showDescription && <span className="text-xs opacity-75">· {info.description}</span>}
     </span>
   );
 
