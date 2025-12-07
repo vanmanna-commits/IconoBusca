@@ -68,7 +68,7 @@ export const ImageModal = ({ image, onClose, onDownload }) => {
                 </DialogHeader>
 
                 <div className="space-y-4">
-                  <div className="flex gap-2 flex-wrap">
+                  <div className="flex gap-2 flex-wrap items-center">
                     <span 
                       className="px-3 py-1 rounded-full text-xs tracking-widest uppercase font-semibold"
                       style={{ 
@@ -78,16 +78,28 @@ export const ImageModal = ({ image, onClose, onDownload }) => {
                     >
                       {image.source}
                     </span>
-                    <span 
-                      className="px-3 py-1 rounded-full text-xs"
+                    <LicenseBadge license={image.license} size="md" showDescription={true} />
+                  </div>
+
+                  {/* License Info Box for CC licenses */}
+                  {image.license && image.license.includes('CC') && (
+                    <div 
+                      className="p-3 rounded-lg flex gap-3"
                       style={{ 
-                        backgroundColor: image.license === 'paid' ? '#FEF3C7' : '#DCFCE7',
-                        color: image.license === 'paid' ? '#92400E' : '#166534'
+                        backgroundColor: '#F0F9FF',
+                        border: '1px solid #BAE6FD'
                       }}
                     >
-                      {image.license === 'paid' ? 'Licença Paga' : 'Uso Gratuito'}
-                    </span>
-                  </div>
+                      <FiInfo className="w-5 h-5 flex-shrink-0" style={{ color: '#0891B2' }} />
+                      <div className="text-sm" style={{ color: '#0C4A6E' }}>
+                        <p className="font-medium mb-1">Licença Creative Commons</p>
+                        <p className="text-xs">
+                          Esta imagem está licenciada sob {image.license}. 
+                          Verifique os termos de uso antes de utilizar.
+                        </p>
+                      </div>
+                    </div>
+                  )}
 
                   {image.description && (
                     <p className="text-sm font-light" style={{ color: '#71717A', fontFamily: 'Manrope, sans-serif' }}>
