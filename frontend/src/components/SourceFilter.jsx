@@ -27,6 +27,12 @@ const PAID_SOURCES_BR = [
   { id: 'fabio_colombini', label: 'F. Colombini' }
 ];
 
+const PUBLIC_SOURCES_BR = [
+  { id: 'agencia_brasil', label: 'Agência Brasil' },
+  { id: 'inpe', label: 'INPE Satélite' },
+  { id: 'ibge', label: 'IBGE Cidades' }
+];
+
 export const SourceFilter = ({ selectedSources, onChange }) => {
   const handleSourceToggle = (sourceId) => {
     const updated = selectedSources.includes(sourceId)
