@@ -8,7 +8,8 @@ const FREE_SOURCES = [
   { id: 'unsplash', label: 'Unsplash' },
   { id: 'pexels', label: 'Pexels' },
   { id: 'pixabay', label: 'Pixabay' },
-  { id: 'freepik', label: 'Freepik' }
+  { id: 'freepik', label: 'Freepik' },
+  { id: 'creative_commons', label: 'Creative Commons' }
 ];
 
 const PAID_SOURCES = [
