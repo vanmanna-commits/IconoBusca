@@ -2,6 +2,7 @@ import httpx
 from typing import List
 from config import get_settings
 from schemas import ImageSource
+import base64
 
 class ShutterstockService:
     def __init__(self):
@@ -9,15 +10,15 @@ class ShutterstockService:
         self.base_url = "https://api.shutterstock.com/v2"
     
     async def search_images(self, query: str, page: int = 1, per_page: int = 20) -> List[ImageSource]:
-        if not self.settings.shutterstock_api_key:
+        if not self.settings.shutterstock_client_id or not self.settings.shutterstock_client_secret:
             return []
         
         try:
-            import base64
-            credentials = base64.b64encode(self.settings.shutterstock_api_key.encode()).decode()
+            credentials = f"{self.settings.shutterstock_client_id}:{self.settings.shutterstock_client_secret}"
+            encoded_credentials = base64.b64encode(credentials.encode()).decode()
             
             headers = {
-                'Authorization': f'Basic {credentials}',
+                'Authorization': f'Basic {encoded_credentials}',
                 'User-Agent': 'LuminaSearchAPI/1.0'
             }
             params = {
