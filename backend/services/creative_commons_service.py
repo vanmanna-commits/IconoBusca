@@ -9,7 +9,7 @@ class CreativeCommonsService:
         self.settings = get_settings()
         self.base_url = "https://api.openverse.org/v1"
     
-    async def search_images(self, query: str, page: int = 1, per_page: int = 20, license_type: str = None) -> List[ImageSource]:
+    async def search_images(self, query: str, page: int = 1, per_page: int = 20, order_by: str = 'relevant', license_type: str = None) -> List[ImageSource]:
         try:
             params = {
                 'q': query,
