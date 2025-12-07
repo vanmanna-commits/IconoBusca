@@ -37,7 +37,7 @@ class UnsplashService:
             images = []
             for photo in data.get('results', []):
                 images.append(ImageSource(
-                    title=photo.get('description', photo.get('alt_description', 'Untitled')),
+                    title=photo.get('description') or photo.get('alt_description') or 'Untitled',
                     description=photo.get('alt_description'),
                     thumbnail_url=photo['urls']['thumb'],
                     regular_url=photo['urls']['regular'],
