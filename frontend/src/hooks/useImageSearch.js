@@ -22,7 +22,11 @@ export const useImageSearch = () => {
       return;
     }
 
-    setLoading(true);
+    if (append) {
+      setLoadingMore(true);
+    } else {
+      setLoading(true);
+    }
     setError(null);
 
     try {
@@ -31,25 +35,40 @@ export const useImageSearch = () => {
         params: {
           query,
           page,
-          per_page: 20,
+          per_page: 50,
           sources: sourcesString,
           order_by: orderBy
         },
         timeout: 30000
       });
 
-      setImages(response.data.images);
+      if (append) {
+        setImages(prev => [...prev, ...response.data.images]);
+      } else {
+        setImages(response.data.images);
+      }
+      
       setTotalResults(response.data.total_results);
       setSearchTime(response.data.search_time_ms);
       setSearchQuery(query);
       setCurrentPage(page);
+      setHasMore(response.data.images.length === 50 * sources.length);
     } catch (err) {
       setError(err.response?.data?.detail || 'Falha ao buscar imagens');
-      setImages([]);
+      if (!append) {
+        setImages([]);
+      }
     } finally {
       setLoading(false);
+      setLoadingMore(false);
     }
   }, [selectedSources, sortBy]);
+
+  const loadMore = useCallback(async () => {
+    if (!searchQuery || loadingMore || !hasMore) return;
+    const nextPage = currentPage + 1;
+    await performSearch(searchQuery, nextPage, selectedSources, sortBy, true);
+  }, [searchQuery, currentPage, selectedSources, sortBy, loadingMore, hasMore, performSearch]);
 
   return {
     images,
