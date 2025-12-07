@@ -144,11 +144,14 @@ export const ImageGrid = ({ images, isLoading, searchQuery }) => {
               </div>
             </div>
             
-            <div className="p-4" style={{ backgroundColor: '#FFFFFF' }}>
+            <div className="p-4" style={{ backgroundColor: '#1C1C1C' }}>
               <div className="flex items-center justify-between mb-3">
                 <span 
-                  className="text-xs tracking-widest uppercase font-semibold"
-                  style={{ color: '#A1A1AA' }}
+                  className="text-xs tracking-wide uppercase font-medium"
+                  style={{ 
+                    color: '#666666',
+                    fontFamily: 'JetBrains Mono, monospace'
+                  }}
                 >
                   {image.source}
                 </span>
@@ -158,7 +161,7 @@ export const ImageGrid = ({ images, isLoading, searchQuery }) => {
               <h3 
                 className="text-sm font-medium mb-2 line-clamp-2"
                 style={{ 
-                  color: '#1A1A1A',
+                  color: '#FFFFFF',
                   fontFamily: 'Manrope, sans-serif',
                   minHeight: '2.5rem'
                 }}
@@ -168,10 +171,10 @@ export const ImageGrid = ({ images, isLoading, searchQuery }) => {
               
               {image.photographer && (
                 <p 
-                  className="text-xs font-light"
-                  style={{ color: '#71717A' }}
+                  className="text-xs"
+                  style={{ color: '#A1A1A1' }}
                 >
-                  por {image.photographer}
+                  {image.photographer}
                 </p>
               )}
             </div>
