@@ -17,11 +17,18 @@ class UnsplashService:
                 'Authorization': f'Client-ID {self.settings.unsplash_api_key}',
                 'Accept-Version': 'v1'
             }
+            # Mapear ordenação para formato Unsplash
+            unsplash_order = 'relevant'
+            if order_by == 'latest':
+                unsplash_order = 'latest'
+            elif order_by == 'oldest':
+                unsplash_order = 'oldest'
+            
             params = {
                 'query': query,
                 'page': page,
                 'per_page': min(per_page, 20),
-                'order_by': 'relevant'
+                'order_by': unsplash_order
             }
             
             async with httpx.AsyncClient() as client:
