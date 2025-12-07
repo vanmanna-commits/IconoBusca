@@ -34,7 +34,7 @@ async def health_check():
 
 @app.get("/api/sources")
 async def get_available_sources():
-    \"\"\"Retorna lista de fontes disponíveis (gratuitas e pagas)\"\"\"
+    """Retorna lista de fontes disponíveis (gratuitas e pagas)"""
     from config import get_settings
     settings = get_settings()
     
