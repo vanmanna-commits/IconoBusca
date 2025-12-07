@@ -19,6 +19,9 @@ from services.natureza_brasileira_service import natureza_brasileira_service
 from services.colombini_service import colombini_service
 from services.freepik_service import freepik_service
 from services.creative_commons_service import creative_commons_service
+from services.agencia_brasil_service import agencia_brasil_service
+from services.inpe_service import inpe_service
+from services.ibge_service import ibge_service
 
 app = FastAPI(title="Lumina Search API")
 
