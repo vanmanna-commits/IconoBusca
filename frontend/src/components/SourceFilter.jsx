@@ -18,6 +18,14 @@ const PAID_SOURCES = [
   { id: 'pulsar_imagens', label: 'Pulsar Imagens 💰', icon: <FaImages className="w-4 h-4" /> }
 ];
 
+const PAID_SOURCES_BR = [
+  { id: 'fotoarena', label: 'Foto Arena 🇧🇷', icon: <FaImages className="w-4 h-4" /> },
+  { id: 'usp_imagens', label: 'USP Imagens 🇧🇷', icon: <FaImages className="w-4 h-4" /> },
+  { id: 'tyba', label: 'Tyba 🇧🇷', icon: <FaImages className="w-4 h-4" /> },
+  { id: 'natureza_brasileira', label: 'Natureza Brasileira 🇧🇷', icon: <FaImages className="w-4 h-4" /> },
+  { id: 'fabio_colombini', label: 'Fabio Colombini 🇧🇷', icon: <FaImages className="w-4 h-4" /> }
+];
+
 export const SourceFilter = ({ selectedSources, onChange }) => {
   const handleSourceToggle = (sourceId) => {
     const updated = selectedSources.includes(sourceId)
