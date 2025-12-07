@@ -130,6 +130,14 @@ async def search_images(
     if "creative_commons" in source_list:
         tasks.append(creative_commons_service.search_images(query, page, per_page, order_by))
     
+    # Fontes Públicas Brasileiras
+    if "agencia_brasil" in source_list:
+        tasks.append(agencia_brasil_service.search_images(query, page, per_page, order_by))
+    if "inpe" in source_list:
+        tasks.append(inpe_service.search_images(query, page, per_page, order_by))
+    if "ibge" in source_list:
+        tasks.append(ibge_service.search_images(query, page, per_page, order_by))
+    
     results = await asyncio.gather(*tasks, return_exceptions=True)
     
     all_images = []
