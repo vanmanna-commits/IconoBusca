@@ -122,7 +122,7 @@ async def search_images(
     
     # Creative Commons
     if "creative_commons" in source_list:
-        tasks.append(creative_commons_service.search_images(query, page, per_page))
+        tasks.append(creative_commons_service.search_images(query, page, per_page, order_by))
     
     results = await asyncio.gather(*tasks, return_exceptions=True)
     
