@@ -17,6 +17,7 @@ from services.usp_service import usp_service
 from services.tyba_service import tyba_service
 from services.natureza_brasileira_service import natureza_brasileira_service
 from services.colombini_service import colombini_service
+from services.freepik_service import freepik_service
 
 app = FastAPI(title="Lumina Search API")
 
