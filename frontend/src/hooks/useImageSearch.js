@@ -47,7 +47,7 @@ export const useImageSearch = () => {
     } finally {
       setLoading(false);
     }
-  }, [selectedSources]);
+  }, [selectedSources, sortBy]);
 
   return {
     images,
@@ -58,8 +58,10 @@ export const useImageSearch = () => {
     selectedSources,
     totalResults,
     searchTime,
+    sortBy,
     performSearch,
     setSelectedSources,
-    setCurrentPage
+    setCurrentPage,
+    setSortBy
   };
 };
