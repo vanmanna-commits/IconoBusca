@@ -12,6 +12,11 @@ from services.shutterstock_service import shutterstock_service
 from services.getty_service import getty_service
 from services.istock_service import istock_service
 from services.pulsar_service import pulsar_service
+from services.fotoarena_service import fotoarena_service
+from services.usp_service import usp_service
+from services.tyba_service import tyba_service
+from services.natureza_brasileira_service import natureza_brasileira_service
+from services.colombini_service import colombini_service
 
 app = FastAPI(title="Lumina Search API")
 
