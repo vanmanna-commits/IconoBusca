@@ -71,7 +71,7 @@ function App() {
           <div 
             data-testid="error-message"
             className="p-4 rounded-lg" 
-            style={{ backgroundColor: '#FEE2E2', color: '#991B1B', border: '1px solid #FECACA' }}
+            style={{ backgroundColor: '#2A1A1A', color: '#FF6B6B', border: '1px solid #3A2A2A' }}
           >
             {error}
           </div>
