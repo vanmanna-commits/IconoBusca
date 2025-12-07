@@ -6,6 +6,7 @@ const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 export const useImageSearch = () => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [loadingMore, setLoadingMore] = useState(false);
   const [error, setError] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
@@ -13,8 +14,9 @@ export const useImageSearch = () => {
   const [totalResults, setTotalResults] = useState(0);
   const [searchTime, setSearchTime] = useState(0);
   const [sortBy, setSortBy] = useState('relevant');
+  const [hasMore, setHasMore] = useState(true);
 
-  const performSearch = useCallback(async (query, page = 1, sources = selectedSources, orderBy = sortBy) => {
+  const performSearch = useCallback(async (query, page = 1, sources = selectedSources, orderBy = sortBy, append = false) => {
     if (!query.trim()) {
       setError('Por favor, insira uma consulta de busca');
       return;
