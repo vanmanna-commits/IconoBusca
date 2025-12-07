@@ -21,19 +21,23 @@ export const SourceFilter = ({ selectedSources, onChange }) => {
 
   return (
     <motion.div 
-      className="sticky top-8"
+      className="sticky top-8 p-6 rounded-lg"
+      style={{
+        backgroundColor: '#1C1C1C',
+        border: '1px solid #2A2A2A'
+      }}
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5 }}
     >
       <h3 
-        className="text-xs tracking-widest uppercase font-semibold mb-6"
+        className="text-xs tracking-widest uppercase font-medium mb-6"
         style={{ 
-          fontFamily: 'Manrope, sans-serif',
-          color: '#71717A'
+          fontFamily: 'JetBrains Mono, monospace',
+          color: '#A1A1A1'
         }}
       >
-        Fontes de Imagens
+        Fontes
       </h3>
       <div className="space-y-3">
         {FREE_SOURCES.map((source) => (
@@ -46,10 +50,10 @@ export const SourceFilter = ({ selectedSources, onChange }) => {
             />
             <Label 
               htmlFor={source.id} 
-              className="cursor-pointer text-sm font-light"
+              className="cursor-pointer text-sm"
               style={{ 
                 fontFamily: 'Manrope, sans-serif',
-                color: '#1A1A1A'
+                color: '#FFFFFF'
               }}
             >
               {source.label}
