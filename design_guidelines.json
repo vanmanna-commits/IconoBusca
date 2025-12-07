@@ -1,0 +1,136 @@
+{
+  "identity": {
+    "name": "E1",
+    "role": "The Anti-AI Designer",
+    "principles": [
+      "Fusion over Imitation",
+      "Emotion First",
+      "Content is King",
+      "Zoom In",
+      "Negative Space",
+      "Contrast"
+    ]
+  },
+  "project_context": {
+    "app_name": "Lumina Search",
+    "app_type": "Image Search Dashboard",
+    "target_audience": "Designers, Creators, Marketers",
+    "emotional_tone": "Invisible, Precision, Gallery-like, Fast",
+    "theme_strategy": "Dark Mode Default (The 'Darkroom' Aesthetic)"
+  },
+  "design_system": {
+    "typography": {
+      "headings": {
+        "font_family": "Manrope, sans-serif",
+        "weights": ["600", "800"],
+        "usage": "Main titles, Section headers. Tight tracking."
+      },
+      "body": {
+        "font_family": "Inter, sans-serif",
+        "weights": ["400", "500"],
+        "usage": "UI text, metadata, descriptions."
+      },
+      "mono": {
+        "font_family": "JetBrains Mono, monospace",
+        "usage": "Technical data, file sizes, dimensions."
+      }
+    },
+    "colors": {
+      "palette_name": "Zinc & Light",
+      "background": {
+        "default": "#09090b",
+        "surface": "#18181b",
+        "overlay": "rgba(9, 9, 11, 0.8)"
+      },
+      "text": {
+        "primary": "#fafafa",
+        "secondary": "#a1a1aa",
+        "muted": "#52525b"
+      },
+      "border": {
+        "default": "#27272a",
+        "active": "#3f3f46"
+      },
+      "accent": {
+        "primary": "#fafafa",
+        "secondary": "#3b82f6"
+      }
+    },
+    "spacing": {
+      "scale": "Generous (2x standard)",
+      "grid_gap": "gap-6",
+      "container_padding": "p-8 md:p-12"
+    },
+    "radius": {
+      "default": "rounded-xl",
+      "button": "rounded-full",
+      "card": "rounded-lg"
+    },
+    "shadows": {
+      "card": "none",
+      "hover": "0 20px 25px -5px rgb(0 0 0 / 0.5), 0 8px 10px -6px rgb(0 0 0 / 0.5)",
+      "glass": "0 4px 30px rgba(0, 0, 0, 0.1)"
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-white text-black hover:bg-zinc-200 rounded-full px-8 font-medium transition-transform active:scale-95",
+      "secondary": "bg-zinc-800 text-white hover:bg-zinc-700 rounded-full px-6 border border-zinc-700",
+      "icon": "p-2 rounded-full hover:bg-zinc-800 text-zinc-400 hover:text-white transition-colors"
+    },
+    "inputs": {
+      "search_bar": "bg-zinc-900/50 border-zinc-800 text-xl p-6 rounded-2xl focus:ring-2 focus:ring-white/20 focus:border-zinc-700 placeholder:text-zinc-600 backdrop-blur-md"
+    },
+    "cards": {
+      "image_card": "group relative overflow-hidden rounded-lg bg-zinc-900 aspect-auto cursor-zoom-in",
+      "overlay": "absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4"
+    },
+    "dialogs": {
+      "lightbox": "bg-zinc-950/95 backdrop-blur-xl border-zinc-800 sm:max-w-[90vw] h-[90vh] p-0 overflow-hidden"
+    }
+  },
+  "layout_strategies": {
+    "hero": {
+      "type": "Centered Focus",
+      "structure": "h-[60vh] flex flex-col items-center justify-center relative overflow-hidden",
+      "background": "Subtle animated gradient or slow-pan abstract image grid with low opacity"
+    },
+    "results_grid": {
+      "type": "Masonry",
+      "implementation": "Use CSS columns (columns-1 md:columns-3 lg:columns-4 gap-6) or 'react-responsive-masonry'",
+      "item_style": "break-inside-avoid mb-6"
+    }
+  },
+  "assets": {
+    "icons": {
+      "library": "react-icons",
+      "sets": ["FaUnsplash", "FaGoogle", "FaImages", "FiDownload", "FiExternalLink", "FiSearch", "FiX", "FiMaximize2"]
+    },
+    "images": {
+      "hero_bg": "https://images.unsplash.com/photo-1617322681195-21bbc1ada5bd?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "placeholders": [
+        "https://images.unsplash.com/photo-1694500069324-d782decdd190?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "https://images.unsplash.com/photo-1725709392546-90721fba6a7d?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "https://images.unsplash.com/photo-1697898783543-18651b0db28f?crop=entropy&cs=srgb&fm=jpg&q=85"
+      ]
+    }
+  },
+  "instructions_to_main_agent": [
+    "1. THEME: Force Dark Mode. The app should feel like a darkroom. Use Zinc-950 as the main background.",
+    "2. SEARCH BAR: Make it the 'Hero' of the page. Large, centered, with a subtle glass effect.",
+    "3. MASONRY: Do NOT use a standard grid. Images have different aspect ratios. Use CSS columns (`columns-xs` to `columns-xl`) to create a true masonry layout.",
+    "4. SOURCES: Use Icons (FaUnsplash, etc.) to indicate the source of the image on the card overlay.",
+    "5. LIGHTBOX: When an image is clicked, open a full-screen dialog (Shadcn Dialog). Show the image as large as possible with metadata on the side or bottom.",
+    "6. PERFORMANCE: Use `loading='lazy'` on all images. Use low-res thumbnails for the grid if possible (mock this behavior).",
+    "7. ANIMATION: Use `framer-motion` for the grid items entering (staggered fade-up).",
+    "8. NO EMPTY STATES: If no results, show a 'Curated Collections' section using the placeholder images."
+  ],
+  "universal_guidelines": [
+    "Avoid generic 'AI slop' designs.",
+    "Use 2-3x more spacing than typical.",
+    "Every interaction needs micro-animations.",
+    "Use 'sonner' for toasts.",
+    "Components MUST use named exports.",
+    "Pages MUST use default exports."
+  ]
+}
