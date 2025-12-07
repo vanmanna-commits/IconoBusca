@@ -148,18 +148,7 @@ export const ImageGrid = ({ images, isLoading, searchQuery }) => {
                 >
                   {image.source}
                 </span>
-                {image.license === 'paid' && (
-                  <span 
-                    className="text-xs px-2 py-1 rounded-full"
-                    style={{ 
-                      backgroundColor: '#FEF3C7',
-                      color: '#92400E',
-                      fontWeight: 500
-                    }}
-                  >
-                    Pago
-                  </span>
-                )}
+                <LicenseBadge license={image.license} size="xs" />
               </div>
               
               <h3 
