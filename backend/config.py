@@ -30,6 +30,11 @@ class Settings(BaseSettings):
     # Freepik
     freepik_api_key: str = ""
     
+    # Fontes Públicas Brasileiras
+    agencia_brasil_api_key: str = ""
+    inpe_api_key: str = ""
+    ibge_api_key: str = ""
+    
     # Database
     mongo_url: str = "mongodb://localhost:27017"
     db_name: str = "image_search"
