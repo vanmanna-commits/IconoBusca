@@ -1,140 +1,125 @@
 {
+  "identity": {
+    "name": "E1",
+    "persona": "The Anti-AI Designer",
+    "principles": [
+      "Fusion over Imitation",
+      "Emotion First",
+      "Content is King",
+      "Zoom In",
+      "Negative Space",
+      "Contrast"
+    ]
+  },
+  "project_context": {
+    "app_name": "Lumina Search",
+    "app_type": "Professional Image Search Dashboard",
+    "target_audience": "Designers, Creative Directors, Corporate Marketing",
+    "emotional_tone": "Sophisticated, Precision, Silent Utility",
+    "visual_mood": "The Darkroom",
+    "theme_mode": "dark"
+  },
   "design_system": {
-    "identity": {
-      "name": "E1 - The Anti-AI Designer",
-      "tone": "Elegant, Minimalist, Sophisticated, Gallery-like",
-      "principles": [
-        "Fusion over Imitation: Swiss Poster meets Digital Product",
-        "Emotion First: Calm, Clarity, Focus",
-        "Content is King: The UI recedes, the images shine",
-        "Negative Space: Luxurious margins",
-        "Contrast: Sharp typography against soft backgrounds"
-      ]
-    },
     "typography": {
       "font_family": {
-        "headings": "Playfair Display, serif",
+        "heading": "Manrope, sans-serif",
         "body": "Manrope, sans-serif",
         "mono": "JetBrains Mono, monospace"
       },
-      "scale": {
-        "h1": "text-5xl md:text-7xl font-medium tracking-tight leading-tight",
-        "h2": "text-4xl md:text-5xl font-normal tracking-tight",
-        "h3": "text-2xl md:text-3xl font-normal",
-        "body_lg": "text-lg md:text-xl leading-relaxed font-light",
-        "body_base": "text-base leading-relaxed text-muted-foreground",
-        "caption": "text-xs tracking-widest uppercase font-semibold text-muted-foreground/70"
-      },
-      "imports": [
-        "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Manrope:wght@300;400;500;600&display=swap"
-      ]
+      "usage": {
+        "h1": "text-4xl md:text-5xl font-semibold tracking-tight text-white",
+        "h2": "text-2xl md:text-3xl font-medium tracking-tight text-white",
+        "body": "text-base text-neutral-400 leading-relaxed",
+        "caption": "text-xs font-mono text-neutral-500 uppercase tracking-widest",
+        "label": "text-sm font-medium text-neutral-300"
+      }
     },
     "colors": {
       "palette": {
-        "background": "#FFFFFF",
-        "foreground": "#1A1A1A",
-        "primary": "#1A1A1A",
-        "primary_foreground": "#FFFFFF",
-        "secondary": "#F4F4F5",
-        "secondary_foreground": "#18181B",
-        "muted": "#F4F4F5",
-        "muted_foreground": "#71717A",
-        "accent": "#FF4500",
-        "accent_foreground": "#FFFFFF",
-        "border": "#E4E4E7",
-        "input": "#E4E4E7",
-        "ring": "#1A1A1A"
+        "background": "#121212",
+        "surface": "#1C1C1C",
+        "surface_hover": "#252525",
+        "border": "#2A2A2A",
+        "primary": "#FFFFFF",
+        "primary_foreground": "#000000",
+        "muted": "#A1A1A1",
+        "accent": "#333333"
       },
-      "usage": {
-        "body_bg": "bg-white",
-        "text_main": "text-zinc-900",
-        "text_muted": "text-zinc-500",
-        "action_color": "bg-zinc-900 hover:bg-zinc-800 text-white",
-        "accent_highlight": "text-[#FF4500]"
+      "tailwind_config_extension": {
+        "colors": {
+          "obsidian": "#121212",
+          "charcoal": "#1C1C1C",
+          "graphite": "#2A2A2A",
+          "ash": "#A1A1A1"
+        }
       }
     },
     "spacing": {
-      "container": "max-w-7xl mx-auto px-6 md:px-12",
-      "section_padding": "py-20 md:py-32",
-      "grid_gap": "gap-8 md:gap-12",
-      "element_spacing": "space-y-6"
-    },
-    "layout": {
-      "grid_system": "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8",
-      "masonry_mode": "columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8",
-      "header_height": "h-20"
-    },
-    "components": {
-      "buttons": {
-        "style": "rounded-full px-8 py-6 text-sm font-medium transition-all duration-300",
-        "primary": "bg-primary text-primary-foreground hover:scale-105 hover:shadow-xl",
-        "secondary": "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        "ghost": "hover:bg-accent/10 hover:text-accent"
-      },
-      "inputs": {
-        "search_bar": "h-16 text-lg bg-transparent border-b-2 border-zinc-200 focus:border-zinc-900 focus:ring-0 px-0 rounded-none placeholder:text-zinc-300 transition-colors"
-      },
-      "cards": {
-        "image_card": "group relative overflow-hidden rounded-none bg-zinc-50 transition-all duration-500 hover:shadow-2xl",
-        "overlay": "absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"
-      }
+      "container_padding": "p-6 md:p-12",
+      "element_gap": "gap-6",
+      "section_gap": "gap-16"
     },
     "visual_enhancers": {
-      "shadows": {
-        "soft": "shadow-[0_8px_30px_rgb(0,0,0,0.04)]",
-        "hover": "shadow-[0_8px_30px_rgb(0,0,0,0.12)]"
-      },
-      "borders": "border border-zinc-100",
-      "glass": "backdrop-blur-md bg-white/80 border-b border-white/20"
+      "glassmorphism": "bg-black/60 backdrop-blur-xl border-b border-white/5",
+      "borders": "border border-white/5",
+      "shadows": "shadow-[0_8px_32px_rgba(0,0,0,0.2)]",
+      "radius": "rounded-none md:rounded-lg"
+    }
+  },
+  "components": {
+    "layout": {
+      "structure": "Fixed left sidebar (filters) + Infinite Scroll Masonry Grid (main)",
+      "grid_system": "Masonry layout (use 'react-responsive-masonry' or CSS columns)",
+      "z_index": {
+        "header": 50,
+        "modal": 100,
+        "toast": 110
+      }
     },
-    "motion": {
-      "transition_base": "transition-all duration-300 ease-out",
-      "hover_lift": "hover:-translate-y-1",
-      "fade_in": "animate-in fade-in duration-700 slide-in-from-bottom-4"
+    "search_bar": {
+      "style": "Massive, central input. No borders, just bottom border or minimal container.",
+      "interaction": "Expands on focus. Moves to top sticky header on scroll.",
+      "classes": "h-14 bg-surface border-border focus:ring-0 focus:border-white transition-all duration-300"
+    },
+    "image_card": {
+      "style": "Borderless. Image is hero. Metadata appears on hover only.",
+      "hover_effect": "group-hover:opacity-100 transition-opacity duration-200 bg-gradient-to-t from-black/90 via-black/40 to-transparent",
+      "actions": "Download button (white pill), Like button (icon only), Info button"
+    },
+    "filters": {
+      "style": "Sidebar vertical list. Minimal checkboxes. 'Mono' font for counts.",
+      "badges": "Source badges (Unsplash, Pexels) should be text-only or simple icons, no colorful logos."
+    },
+    "modal": {
+      "style": "Immersive Lightbox. 90% viewport height image. Side panel for details.",
+      "backdrop": "bg-black/90 backdrop-blur-sm"
     }
   },
   "assets": {
-    "images": {
-      "architecture": [
-        "https://images.unsplash.com/photo-1602577121285-aca49920efac?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODF8MHwxfHNlYXJjaHwxfHxtaW5pbWFsaXN0JTIwd2hpdGUlMjBhcmNoaXRlY3R1cmV8ZW58MHx8fHwxNzY1MDc5NDI2fDA&ixlib=rb-4.1.0&q=85",
-        "https://images.unsplash.com/photo-1637489415491-f9622f751216?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODF8MHwxfHNlYXJjaHwyfHxtaW5pbWFsaXN0JTIwd2hpdGUlMjBhcmNoaXRlY3R1cmV8ZW58MHx8fHwxNzY1MDc5NDI2fDA&ixlib=rb-4.1.0&q=85"
-      ],
-      "textures": [
-        "https://images.unsplash.com/photo-1695243000917-3445663f90af?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2Mzl8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMHdoaXRlJTIwcGFwZXIlMjB0ZXh0dXJlfGVufDB8fHx8MTc2NTA3OTQyN3ww&ixlib=rb-4.1.0&q=85",
-        "https://images.unsplash.com/photo-1736979110931-ac9c6fa82dbd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2Mzl8MHwxfHNlYXJjaHwyfHxhYnN0cmFjdCUyMHdoaXRlJTIwcGFwZXIlMjB0ZXh0dXJlfGVufDB8fHx8MTc2NTA3OTQyN3ww&ixlib=rb-4.1.0&q=85"
-      ],
-      "portraits": [
-        "https://images.unsplash.com/photo-1670881391783-9c55ba592f93?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzB8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBwb3J0cmFpdCUyMGJsYWNrJTIwYW5kJTIwd2hpdGV8ZW58MHx8fHwxNzY1MDc5NDI5fDA&ixlib=rb-4.1.0&q=85",
-        "https://images.unsplash.com/photo-1701286180819-5b2b96af0d7e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzB8MHwxfHNlYXJjaHwyfHxwcm9mZXNzaW9uYWwlMjBwb3J0cmFpdCUyMGJsYWNrJTIwYW5kJTIwd2hpdGV8ZW58MHx8fHwxNzY1MDc5NDI5fDA&ixlib=rb-4.1.0&q=85"
-      ]
+    "icons": {
+      "library": "react-icons",
+      "sets": ["FaUnsplash", "SiPexels", "SiPixabay", "FaGoogle", "FaCreativeCommons"],
+      "usage": "Use specific brand icons for source filters. Use Lucide-react for UI icons (download, search, close)."
     },
-    "icons": "lucide-react"
+    "images": {
+      "placeholders": "Use 'https://images.unsplash.com/photo-...' for mock data if API fails.",
+      "logo_strategy": "Use text logo 'LUMINA' in 'JetBrains Mono' font. Tracking-widest."
+    }
   },
   "instructions_to_main_agent": {
-    "general": [
-      "IMPLEMENT LIGHT MODE ONLY. Do not use dark mode classes.",
-      "Use 'Playfair Display' for all Headings (h1, h2, h3). Use 'Manrope' for body text.",
-      "The Search Bar must be the HERO of the page. Make it large, centered, and elegant.",
-      "Use 'Masonry' layout for the image grid. If true masonry is hard with CSS grid, use 'columns-1 md:columns-3' CSS property.",
-      "Do not use standard Shadcn cards. Create a custom 'ImageCard' that is minimal (no border, just image + hover overlay).",
-      "Ensure generous whitespace. Use 'py-20' or 'py-32' for section spacing.",
-      "Add 'data-testid' to all interactive elements."
-    ],
-    "pages": {
-      "home": {
-        "structure": "Hero Section (Large Title + Search) -> Filters (Horizontal, Minimal) -> Image Grid -> Pagination/Load More",
-        "hero_text": "Find the perfect image.",
-        "hero_subtext": "Search across Unsplash, Pexels, and Pixabay simultaneously."
-      },
-      "modal": {
-        "style": "Glassmorphism backdrop (backdrop-blur-xl bg-white/90). Clean typography. Large download button."
-      }
-    },
-    "universal_guidelines": [
-      "Avoid generic 'AI slop' designs. Be bold with whitespace.",
-      "No gradients for backgrounds. Use pure white or very subtle off-white.",
-      "Micro-interactions are mandatory (hover states, focus states).",
-      "Use 'sonner' for toasts."
-    ]
-  }
+    "step_1": "Configure Tailwind for Dark Mode. Update index.css with the 'Obsidian' palette variables.",
+    "step_2": "Create the Layout Shell: Sidebar (Left) + Main Content (Right).",
+    "step_3": "Implement the Search Header. It must feel 'expensive' (smooth transitions).",
+    "step_4": "Build the Masonry Grid. Ensure images load gracefully (blur-up effect).",
+    "step_5": "Develop the Image Modal. It must handle high-res images without layout shift.",
+    "step_6": "Add 'data-testid' to ALL interactive elements (buttons, inputs, cards).",
+    "critical_rule": "NO VIBRANT COLORS. The interface is the frame, the content is the art. Use greyscale only."
+  },
+  "universal_guidelines": [
+    "Do not use 'transition: all'. Animate specific properties (opacity, transform).",
+    "Ensure text contrast meets APCA standards (Light Grey on Dark Grey).",
+    "Use 'sonner' for notifications (e.g., 'Download started').",
+    "Avoid generic 'card' look. Use 'surface' colors with subtle borders.",
+    "Typography hierarchy: Headings = Manrope, Meta Data = JetBrains Mono."
+  ]
 }
