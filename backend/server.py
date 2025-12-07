@@ -81,7 +81,7 @@ async def search_images(
         raise HTTPException(status_code=400, detail="Query de busca é obrigatória")
     
     source_list = [s.strip() for s in sources.split(",")]
-    valid_sources = ["google", "unsplash", "pexels", "pixabay", "shutterstock", "getty_images", "istock", "pulsar_imagens", "fotoarena", "usp_imagens", "tyba", "natureza_brasileira", "fabio_colombini", "freepik", "creative_commons"]
+    valid_sources = ["google", "unsplash", "pexels", "pixabay", "shutterstock", "getty_images", "istock", "pulsar_imagens", "fotoarena", "usp_imagens", "tyba", "natureza_brasileira", "fabio_colombini", "freepik", "creative_commons", "agencia_brasil", "inpe", "ibge"]
     source_list = [s for s in source_list if s in valid_sources]
     
     if not source_list:
