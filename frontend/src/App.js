@@ -87,15 +87,18 @@ function App() {
           {/* Main Content */}
           <div className="flex-1">
             {searchQuery && images.length > 0 && (
-              <div 
-                data-testid="search-results-info"
-                className="mb-8 text-xs tracking-widest uppercase font-semibold" 
-                style={{ 
-                  fontFamily: 'Manrope, sans-serif',
-                  color: '#A1A1AA' 
-                }}
-              >
-                {totalResults} imagens · {searchTime.toFixed(0)}ms
+              <div className="mb-6 flex items-center justify-between">
+                <div 
+                  data-testid="search-results-info"
+                  className="text-xs tracking-widest uppercase font-semibold" 
+                  style={{ 
+                    fontFamily: 'Manrope, sans-serif',
+                    color: '#A1A1AA' 
+                  }}
+                >
+                  {totalResults} imagens · {searchTime.toFixed(0)}ms
+                </div>
+                <SortSelect value={sortBy} onChange={handleSortChange} />
               </div>
             )}
             <ImageGrid images={images} isLoading={loading} searchQuery={searchQuery} />
