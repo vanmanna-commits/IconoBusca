@@ -8,17 +8,52 @@ class ShutterstockService:
     def __init__(self):
         self.settings = get_settings()
         self.base_url = "https://api.shutterstock.com/v2"
+        self._access_token = None
     
-    async def search_images(self, query: str, page: int = 1, per_page: int = 20) -> List[ImageSource]:
-        if not self.settings.shutterstock_client_id or not self.settings.shutterstock_client_secret:
-            return []
-        
+    async def _get_access_token(self):
+        """Obtém access token OAuth2 do Shutterstock"""
+        if self._access_token:
+            return self._access_token
+            
         try:
             credentials = f"{self.settings.shutterstock_client_id}:{self.settings.shutterstock_client_secret}"
             encoded_credentials = base64.b64encode(credentials.encode()).decode()
             
             headers = {
                 'Authorization': f'Basic {encoded_credentials}',
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+            data = {
+                'grant_type': 'client_credentials',
+                'realm': 'customer'
+            }
+            
+            async with httpx.AsyncClient() as client:
+                response = await client.post(
+                    'https://api.shutterstock.com/v2/oauth/access_token',
+                    headers=headers,
+                    data=data,
+                    timeout=10.0
+                )
+                response.raise_for_status()
+                token_data = response.json()
+                self._access_token = token_data['access_token']
+                return self._access_token
+        except Exception as e:
+            print(f"Erro ao obter token Shutterstock: {e}")
+            return None
+    
+    async def search_images(self, query: str, page: int = 1, per_page: int = 20) -> List[ImageSource]:
+        if not self.settings.shutterstock_client_id or not self.settings.shutterstock_client_secret:
+            return []
+        
+        try:
+            access_token = await self._get_access_token()
+            if not access_token:
+                return []
+            
+            headers = {
+                'Authorization': f'Bearer {access_token}',
                 'User-Agent': 'LuminaSearchAPI/1.0'
             }
             params = {
