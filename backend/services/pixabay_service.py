@@ -22,7 +22,7 @@ class PixabayService:
                 'order': 'popular'
             }
             
-            async with httpx.AsyncClient() as client:
+            async with httpx.AsyncClient(follow_redirects=True) as client:
                 response = await client.get(self.base_url, params=params, timeout=10.0)
                 response.raise_for_status()
                 data = response.json()
