@@ -68,7 +68,8 @@ async def search_images(
     query: str = Query(..., min_length=1, max_length=100),
     page: int = Query(1, ge=1),
     per_page: int = Query(20, ge=1, le=50),
-    sources: str = Query("google,unsplash,pexels,pixabay")
+    sources: str = Query("google,unsplash,pexels,pixabay"),
+    order_by: str = Query("relevant", regex="^(relevant|latest|oldest)$")
 ):
     if not query:
         raise HTTPException(status_code=400, detail="Query de busca é obrigatória")
