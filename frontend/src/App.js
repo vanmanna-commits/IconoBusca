@@ -15,12 +15,21 @@ function App() {
     totalResults,
     searchTime,
     searchQuery,
+    sortBy,
     performSearch,
-    setSelectedSources
+    setSelectedSources,
+    setSortBy
   } = useImageSearch();
 
   const handleSearch = async (query) => {
-    await performSearch(query, 1, selectedSources);
+    await performSearch(query, 1, selectedSources, sortBy);
+  };
+
+  const handleSortChange = async (newSortBy) => {
+    setSortBy(newSortBy);
+    if (searchQuery) {
+      await performSearch(searchQuery, 1, selectedSources, newSortBy);
+    }
   };
 
   return (
