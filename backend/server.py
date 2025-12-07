@@ -8,6 +8,10 @@ from services.google_search import google_service
 from services.unsplash_service import unsplash_service
 from services.pexels_service import pexels_service
 from services.pixabay_service import pixabay_service
+from services.shutterstock_service import shutterstock_service
+from services.getty_service import getty_service
+from services.istock_service import istock_service
+from services.pulsar_service import pulsar_service
 
 app = FastAPI(title="Lumina Search API")
 
@@ -23,6 +27,28 @@ app.add_middleware(
 async def health_check():
     return {"status": "healthy"}
 
+@app.get("/api/sources")
+async def get_available_sources():
+    \"\"\"Retorna lista de fontes disponíveis (gratuitas e pagas)\"\"\"
+    from config import get_settings
+    settings = get_settings()
+    
+    sources = {
+        "free": [
+            {"id": "google", "name": "Google Custom Search", "available": bool(settings.google_api_key and settings.google_search_engine_id)},
+            {"id": "unsplash", "name": "Unsplash", "available": bool(settings.unsplash_api_key)},
+            {"id": "pexels", "name": "Pexels", "available": bool(settings.pexels_api_key)},
+            {"id": "pixabay", "name": "Pixabay", "available": bool(settings.pixabay_api_key)}
+        ],
+        "paid": [
+            {"id": "shutterstock", "name": "Shutterstock", "available": bool(settings.shutterstock_api_key)},
+            {"id": "getty_images", "name": "Getty Images", "available": bool(settings.getty_images_api_key)},
+            {"id": "istock", "name": "iStock", "available": bool(settings.istock_api_key)},
+            {"id": "pulsar_imagens", "name": "Pulsar Imagens", "available": bool(settings.pulsar_imagens_api_key)}
+        ]
+    }
+    return sources
+
 @app.get("/api/search", response_model=SearchResponse)
 async def search_images(
     query: str = Query(..., min_length=1, max_length=100),
@@ -34,7 +60,7 @@ async def search_images(
         raise HTTPException(status_code=400, detail="Query de busca é obrigatória")
     
     source_list = [s.strip() for s in sources.split(",")]
-    valid_sources = ["google", "unsplash", "pexels", "pixabay"]
+    valid_sources = ["google", "unsplash", "pexels", "pixabay", "shutterstock", "getty_images", "istock", "pulsar_imagens"]
     source_list = [s for s in source_list if s in valid_sources]
     
     if not source_list:
@@ -43,6 +69,7 @@ async def search_images(
     start_time = time.time()
     
     tasks = []
+    # Fontes gratuitas
     if "google" in source_list:
         tasks.append(google_service.search_images(query, page, per_page))
     if "unsplash" in source_list:
@@ -51,6 +78,16 @@ async def search_images(
         tasks.append(pexels_service.search_images(query, page, per_page))
     if "pixabay" in source_list:
         tasks.append(pixabay_service.search_images(query, page, per_page))
+    
+    # Fontes pagas
+    if "shutterstock" in source_list:
+        tasks.append(shutterstock_service.search_images(query, page, per_page))
+    if "getty_images" in source_list:
+        tasks.append(getty_service.search_images(query, page, per_page))
+    if "istock" in source_list:
+        tasks.append(istock_service.search_images(query, page, per_page))
+    if "pulsar_imagens" in source_list:
+        tasks.append(pulsar_service.search_images(query, page, per_page))
     
     results = await asyncio.gather(*tasks, return_exceptions=True)
     
